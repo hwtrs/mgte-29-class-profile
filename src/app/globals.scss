@@ -1,0 +1,77 @@
+// Variables
+$font-league-gothic: 'League Gothic', sans-serif;
+$font-nunito: 'Nunito', sans-serif;
+$title-subtitle-margin: 116px;
+$graphs-charts-margin: 170px;
+$bottom-margin: 100px;
+$side-by-side-graph-width: 500px;
+$side-by-side-graph-height: 500px;
+$side-by-side-graph-space: 100px;
+$standalone-graph-width: 944px;
+$standalone-graph-height: 550px;
+$textbox-margin-top-bottom: 18px;
+
+// Mixins
+@mixin title-subtitle-margin {
+  margin-top: $title-subtitle-margin;
+  margin-bottom: $title-subtitle-margin;
+}
+
+@mixin graphs-charts-margin {
+  margin-top: $graphs-charts-margin;
+  margin-bottom: $graphs-charts-margin;
+}
+
+@mixin bottom-margin {
+  margin-bottom: $bottom-margin;
+}
+
+@mixin side-by-side-graphs {
+  width: $side-by-side-graph-width;
+  height: $side-by-side-graph-height;
+  margin-right: $side-by-side-graph-space;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin standalone-graph {
+  width: $standalone-graph-width;
+  height: $standalone-graph-height;
+}
+
+@mixin textbox-margin {
+  margin-top: $textbox-margin-top-bottom;
+  margin-bottom: $textbox-margin-top-bottom;
+}
+
+@mixin page-title-style {
+  font-family: $font-league-gothic;
+  font-size: 240px;
+  color: transparent;
+  -webkit-text-stroke: 4px black;
+  text-stroke: 4px black;
+}
+
+@mixin section-title-style {
+  font-family: $font-nunito;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+@mixin description-style {
+  font-family: $font-nunito;
+  font-style: italic;
+  font-size: 24px;
+  color: #535047;
+}
+
+@mixin graph-question-text-style {
+  font-size: 20px;
+}
+
+@mixin graph-legend-text-style {
+  font-size: 18px;
+  color: #535047;
+}
