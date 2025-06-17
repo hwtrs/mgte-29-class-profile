@@ -1,17 +1,23 @@
-// This is the global layout file for the entire application.
-// You probably don't need to change this file.
-
-import React from "react";
 import "./globals.scss";
+import Header from "../components/header/Header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MGTE 29 Class Profile",
+  description: "Welcome! Explore the MGTE 29 class profile page and get to know a little more about us!",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

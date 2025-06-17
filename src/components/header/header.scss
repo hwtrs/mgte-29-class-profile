@@ -1,0 +1,25 @@
+@use "../../app/globals.scss" as *;
+
+.header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("/landing/navbar.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // iPad Pro 11" (834 x 1194, ~< 900px)
+  @media (max-width: 900px) {
+    height: 88px;
+  }
+
+  // iPhone 13 Mini (375 x 812)
+  @media (max-width: 400px) {
+    height: 58px;
+  }
+}

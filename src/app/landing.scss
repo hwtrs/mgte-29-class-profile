@@ -1,31 +1,26 @@
 @use "./globals.scss" as *;
 
 .landing-container {
-  min-height: 100vh;
+  width: 100%;
+  height: calc(100% - 50px); // Adjusting for the header height
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f3e8ff;
 
-  .landing-title {
-    @include section-title-style;
-    margin-bottom: 2rem;
-    text-align: center;
+  background-image: url("/landing/book.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+  // iPad Pro 11" (834 x 1194, ~< 900px)
+  @media (max-width: 900px) {
+    // height: 100vh;
   }
 
-  .landing-button {
-    padding: 0.75rem 2rem;
-    font-size: 1.2rem;
-    background: #a78bfa;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .landing-button:hover {
-    background: #7c3aed;
+  // iPhone 13 Mini (375 x 812)
+  @media (max-width: 400px) {
+    // height: 100vh;
   }
 }
