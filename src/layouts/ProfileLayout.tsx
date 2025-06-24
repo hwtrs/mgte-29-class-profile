@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import '../styles/profileLayout.scss';
+import './profilelayout.scss';
 
 interface ProfileLayoutProps {
   children: ReactNode;
