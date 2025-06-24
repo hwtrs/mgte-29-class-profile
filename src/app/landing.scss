@@ -1,26 +1,24 @@
 @use "./globals.scss" as *;
 
 .landing-container {
+  position: relative;
   width: 100%;
-  height: calc(100% - 50px); // Adjusting for the header height
+  height: calc(100% - 50px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background-image: url("/landing/book.png");
-  background-size: cover;
+  background-image: url("/landing/lockers_lg.jpg");
+  background-size: 100% 100%;
+  background-repeat: repeat;
   background-position: center;
-  background-repeat: no-repeat;
 
-
-  // iPad Pro 11" (834 x 1194, ~< 900px)
-  @media (max-width: 900px) {
-    // height: 100vh;
+  @media (max-width: $breakpoint-md) {
+    background-image: url("/landing/lockers_md.jpg");
   }
 
-  // iPhone 13 Mini (375 x 812)
-  @media (max-width: 400px) {
-    // height: 100vh;
+  @media (max-width: $breakpoint-sm) {
+    background-image: url("/landing/lockers_sm.jpg");
   }
 }

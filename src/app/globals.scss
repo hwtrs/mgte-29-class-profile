@@ -10,6 +10,10 @@ $side-by-side-graph-space: 100px;
 $standalone-graph-width: 944px;
 $standalone-graph-height: 550px;
 $textbox-margin-top-bottom: 18px;
+$color-darkest-purple: rgba(98, 71, 170);
+
+$breakpoint-md: 1024px;
+$breakpoint-sm: 440px;
 
 // Mixins
 @mixin title-subtitle-margin {
