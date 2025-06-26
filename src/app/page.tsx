@@ -8,6 +8,12 @@ const Home = () => {
   const [hovered, setHovered] = useState<string | null>(null);
   const [clicked, setClicked] = useState<string | null>(null);
 
+  // TODO: 
+  // fix hover and active settings
+  // swap stickers for md and sm
+  // swap book background for menu
+  // test responsiveness
+
   return (
     <div className="landing-container">
       <div className="book-container">
