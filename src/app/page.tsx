@@ -8,8 +8,6 @@ const Home = () => {
   const [hovered, setHovered] = useState<string | null>(null);
   const [clicked, setClicked] = useState<string | null>(null);
 
-  // TODO: fix stickers absolute positioning on screen resize, sticker hover not correct
-
   return (
     <div className="landing-container">
       <div className="book-container">
@@ -30,13 +28,14 @@ const Home = () => {
               <a
                 href={sticker.href}
                 key={sticker.className}
+                className={sticker.className}
                 onMouseEnter={() => setHovered(sticker.className)}
                 onMouseLeave={() => setHovered(null)}
                 onMouseDown={() => setClicked(sticker.className)}
                 onMouseUp={() => setClicked(null)}
                 onBlur={() => setClicked(null)}
               >
-                <img src={src} className={sticker.className} />
+                <img src={src} />
               </a>
             );
           })}

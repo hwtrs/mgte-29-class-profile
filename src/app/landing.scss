@@ -17,39 +17,40 @@
 
   .book-container {
     position: relative;
+    width: 100vw;
+    max-width: 1150px;
+    height: auto;
+    display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    width: 1440px;
-    height: 990px;
-    margin: 0 auto;
-    display: block;
+    align-items: center;
     z-index: 10;
 
     > img:first-child {
-      position: absolute;
-      top: 0;
-      left: 0;
+      position: relative;
       width: 100%;
-      height: 100%;
+      height: auto;
       z-index: 3;
-      object-fit: contain;
       pointer-events: none;
       transition: top 0.3s, left 0.3s;
     }
+
     > img:nth-child(2) {
       position: absolute;
-      bottom: -220px;
-      right: -200px;
-      width: 650px;
+      bottom: -28%;
+      right: -30%;
+      height: auto;
+      width: 100%;
+      max-width: 650px;
       z-index: 2;
       pointer-events: none;
     }
     > img:nth-child(3) {
       position: absolute;
-      bottom: 0;
-      right: 100px;
-      width: 650px;
+      bottom: -8%;
+      right: -6%;
+      height: auto;
+      width: 100%;
+      max-width: 650px;
       z-index: 1;
       pointer-events: none;
     }
@@ -64,80 +65,96 @@
     z-index: 10;
 
     a {
-      pointer-events: auto;
       position: absolute;
-      display: block;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+      
+      &:hover {
+        transform: scale(1.05);
+        z-index: 12;
+      }
+      
+      &:active {
+        transform: scale(0.95);
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
     }
 
     .about-sticker {
-      position: absolute;
-      top: 95px;
-      left: 300px;
-      width: 190px;
+      top: 12%;
+      left: 13.2%;
+      width: 16%;
+      height: auto;
       z-index: 11;
     }
     
     .manchester-sticker {
-      position: absolute;
-      top: 137px;
-      left: 510px;
-      width: 155px;
+      top: 17.5%;
+      left: 31.5%;
+      width: 13.7%;
+      height: auto;
       z-index: 11;
     }
       
     .demographics-sticker {
-      position: absolute;
-      top: 550px;
-      left: 280px;
-      width: 420px;
+      top: 70.5%;
+      left: 11.6%;
+      width: 36%;
+      height: auto;
       z-index: 11;
     }
 
     .gallery-sticker {
-      position: absolute;
-      top: 70px;
-      left: 1070px;
-      width: 150px;
-      z-index: 11;
-    }
-
-    .pre-mgte-sticker {
-      position: absolute;
-      top: 330px;
-      left: 1006px;
-      width: 200px;
+      top: 8.7%;
+      left: 81%;
+      width: 13%;
+      height: auto;
       z-index: 11;
     }
 
     .co-op-sticker {
-      position: absolute;
-      top: 175px;
-      left: 825px;
-      width: 220px;
+      top: 22.5%;
+      left: 59.3%;
+      width: 19%;
+      height: auto;
       z-index: 11;
     }
 
     .academics-sticker {
-      position: absolute;
-      top: 335px;
-      left: 800px;
-      width: 210px;
+      top: 42.5%;
+      left: 57.5%;
+      width: 18%;
+      height: auto;
+      z-index: 11;
+    }
+
+    .pre-mgte-sticker {
+      top: 41%;
+      left: 75%;
+      width: 18%;
+      height: auto;
       z-index: 11;
     }
 
     .lifestyle-sticker {
-      position: absolute;
-      top: 505px;
-      left: 790px;
-      width: 300px;
+      top: 65%;
+      left: 56.5%;
+      width: 26%;
+      height: auto;
       z-index: 11;
     }
 
     .awards-sticker {
-      position: absolute;
-      top: 475px;
-      left: 1075px;
-      width: 150px;
+      top: 60%;
+      left: 80.8%;
+      width: 13.5%;
+      height: auto;
       z-index: 11;
     }
   }
@@ -159,29 +176,29 @@
         pointer-events: none;
       }
 
-      .about-sticker {
-        position: absolute;
-        top: 155px;
-        left: 220px;
-        width: 190px;
-        z-index: 11;
-      }
+      // .about-sticker {
+      //   position: absolute;
+      //   top: 155px;
+      //   left: 220px;
+      //   width: 190px;
+      //   z-index: 11;
+      // }
       
-      .manchester-sticker {
-        position: absolute;
-        top: 137px;
-        left: 510px;
-        width: 155px;
-        z-index: 11;
-      }
+      // .manchester-sticker {
+      //   position: absolute;
+      //   top: 137px;
+      //   left: 510px;
+      //   width: 155px;
+      //   z-index: 11;
+      // }
         
-      .demographics-sticker {
-        position: absolute;
-        top: 550px;
-        left: 280px;
-        width: 420px;
-        z-index: 11;
-      }
+      // .demographics-sticker {
+      //   position: absolute;
+      //   top: 550px;
+      //   left: 280px;
+      //   width: 420px;
+      //   z-index: 11;
+      // }
     }
   }
 
@@ -203,29 +220,29 @@
         pointer-events: none;
       }
 
-      .about-sticker {
-        position: absolute;
-        top: 95px;
-        left: 300px;
-        width: 190px;
-        z-index: 11;
-      }
+      // .about-sticker {
+      //   position: absolute;
+      //   top: 95px;
+      //   left: 300px;
+      //   width: 190px;
+      //   z-index: 11;
+      // }
       
-      .manchester-sticker {
-        position: absolute;
-        top: 137px;
-        left: 510px;
-        width: 155px;
-        z-index: 11;
-      }
+      // .manchester-sticker {
+      //   position: absolute;
+      //   top: 137px;
+      //   left: 510px;
+      //   width: 155px;
+      //   z-index: 11;
+      // }
         
-      .demographics-sticker {
-        position: absolute;
-        top: 550px;
-        left: 280px;
-        width: 420px;
-        z-index: 11;
-      }
+      // .demographics-sticker {
+      //   position: absolute;
+      //   top: 550px;
+      //   left: 280px;
+      //   width: 420px;
+      //   z-index: 11;
+      // }
     }
   }
 }

@@ -18,7 +18,7 @@ const stickers = {
     hoverSrc: "/landing/stickers/awards/hover.png",
     activeSrc: "/landing/stickers/awards/click.png",
     className: "awards-sticker",
-    href: "/awards"
+    href: "/class-awards"
   },
   co_op: {
     src: "/landing/stickers/co-op/default.png",
