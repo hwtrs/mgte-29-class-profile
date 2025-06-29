@@ -69,11 +69,6 @@
       transition: transform 0.2s ease, filter 0.2s ease;
       cursor: pointer;
       
-      &:hover {
-        transform: scale(1.05);
-        z-index: 12;
-      }
-      
       &:active {
         transform: scale(0.95);
       }
@@ -92,6 +87,10 @@
       width: 16.5%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(6deg) scale(1.05);
+      }
     }
     
     .manchester-sticker {
@@ -100,6 +99,10 @@
       width: 13.7%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(5deg) scale(1.05);
+      }
     }
       
     .demographics-sticker {
@@ -108,6 +111,10 @@
       width: 36%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(-1.5deg) scale(1.055);
+      }
     }
 
     .gallery-sticker {
@@ -116,6 +123,10 @@
       width: 13%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(-5deg) scale(1.05);
+      }
     }
 
     .co-op-sticker {
@@ -124,6 +135,10 @@
       width: 19%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
     }
 
     .academics-sticker {
@@ -132,6 +147,10 @@
       width: 18%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(5.3deg) scale(1.05);
+      }
     }
 
     .pre-mgte-sticker {
@@ -140,6 +159,10 @@
       width: 18%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(4.5deg) scale(1.05);
+      }
     }
 
     .lifestyle-sticker {
@@ -148,6 +171,10 @@
       width: 26%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(-3deg) scale(1.05);
+      }
     }
 
     .awards-sticker {
@@ -156,6 +183,10 @@
       width: 13.5%;
       height: auto;
       z-index: 11;
+
+      &:hover {
+        transform: rotate(-4.3deg) scale(1.05);
+      }
     }
   }
 

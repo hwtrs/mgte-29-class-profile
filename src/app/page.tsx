@@ -10,10 +10,6 @@ const Home = () => {
   const [clicked, setClicked] = useState<string | null>(null);
   const breakpoint = useBreakpoint();
 
-  // TODO: 
-  // fix hover and active sizing for stickers
-  // test responsiveness
-
   return (
     <div className="landing-container">
       <div className="book-container">
