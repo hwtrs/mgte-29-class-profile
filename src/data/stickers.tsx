@@ -3,6 +3,7 @@ const stickers = {
     src: "/landing/stickers/about/default.png",
     hoverSrc: "/landing/stickers/about/hover.png",
     activeSrc: "/landing/stickers/about/click.png",
+    smallSrc: "/landing/stickers/about/small.png",
     className: "about-sticker",
     href: "/about"
   },
@@ -31,6 +32,7 @@ const stickers = {
     src: "/landing/stickers/demographics/default.png",
     hoverSrc: "/landing/stickers/demographics/hover.png",
     activeSrc: "/landing/stickers/demographics/click.png",
+    smallSrc: "/landing/stickers/demographics/small.png",
     className: "demographics-sticker",
     href: "/demographics"
   },
