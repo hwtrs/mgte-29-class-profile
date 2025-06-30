@@ -18,7 +18,12 @@
   .book-container {
     position: relative;
     width: 100vw;
-    max-width: 1150px;
+    max-width: 1165px;
+
+    @media (min-width: $breakpoint-xl) {
+      max-width: 1324px;
+    }
+
     height: auto;
     display: flex;
     justify-content: center;
@@ -36,7 +41,7 @@
 
     > img:nth-child(2) {
       position: absolute;
-      bottom: -28%;
+      bottom: -20%;
       right: -30%;
       height: auto;
       width: 100%;
@@ -47,7 +52,7 @@
     > img:nth-child(3) {
       position: absolute;
       bottom: -8%;
-      right: -6%;
+      right: -3%;
       height: auto;
       width: 100%;
       max-width: 650px;
