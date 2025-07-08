@@ -158,6 +158,18 @@
       }
     }
 
+    .mgte-sticker {
+      top: 0%;
+      left: 55.7%;
+      width: 25.1%;
+      height: auto;
+      z-index: 11;
+
+      &:hover {
+        transform: rotate(4.5deg) scale(1.05);
+      }
+    }
+
     .pre-mgte-sticker {
       top: 41%;
       left: 75%;
@@ -244,6 +256,7 @@
       .gallery-sticker, 
       .co-op-sticker, 
       .academics-sticker,
+      .mgte-sticker,
       .pre-mgte-sticker,
       .lifestyle-sticker,
       .awards-sticker {

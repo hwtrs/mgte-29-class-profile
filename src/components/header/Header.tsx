@@ -6,7 +6,7 @@ import './header.scss';
 
 const menu_items: string[] = [
     "Home", "Demographics", "Academics", "Lifestyle", 
-    "Co-op", "Pre-MGTE", "Gallery", "Class Awards", "About"
+    "Co-op", "Pre-MGTE", "MGTE", "Gallery", "Class Awards", "About"
 ];
 
 const Header: React.FC = () => {

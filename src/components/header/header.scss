@@ -95,14 +95,14 @@
           color: #fff;
           text-decoration: none;
           font-family: $font-nunito;
-          font-size: 40px;
+          font-size: 36px;
           font-weight: 600;
           transition: color 0.2s;
         }
 
         @media (max-width: $breakpoint-sm) {
           a {
-            font-size: 32px;
+            font-size: 28px;
           }
         }
 
