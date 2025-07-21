@@ -1,0 +1,106 @@
+@use "../../app/globals.scss" as *;
+
+.chart-container {
+  @include textbox-margin;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 1rem;
+  }
+
+  .chart-title {
+    @include section-title-style;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $color-darkest-purple;
+  }
+
+  .chart-subtitle {
+    @include description-style;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    height: 400px;
+    position: relative;
+
+    @media (max-width: $breakpoint-sm) {
+      height: 350px;
+    }
+  }
+
+  .loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    
+    .loading-text {
+      @include description-style;
+      font-size: 18px;
+      color: $color-darkest-purple;
+    }
+  }
+
+  .error-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    
+    .error-title {
+      @include graph-question-text-style;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 0.5rem;
+    }
+
+    .error-message {
+      @include description-style;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+}
+
+// Side-by-side layout
+.chart-container.side-by-side {
+  @include side-by-side-graphs;
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+// Standalone layout
+.chart-container.standalone {
+  @include standalone-graph;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+}
+
+// Geo chart specific styles
+.chart-container.geo-chart {
+  .chart-wrapper {
+    height: 500px;
+    
+    @media (max-width: $breakpoint-sm) {
+      height: 400px;
+    }
+  }
+}

@@ -1,5 +1,62 @@
 @use "../globals.scss" as *;
 
 .demographics-container {
-    // About page styles
+  width: 100%;
+  padding: 2rem;
+  background-color: #EFE7E0;
+
+  // Reset old layout styles
+  // ...existing code...
+  // Remove .demographics-content, .demographics-header, .charts-layout, placeholders
+
+  .demographics-chart-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+
+    .section-title {
+      @include section-title-style;
+      font-size: 2.5rem;
+      color: $color-darkest-purple;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      @include description-style;
+      font-size: 1.2rem;
+      color: #5a5a5a;
+      margin-bottom: 2rem;
+    }
+
+    .charts-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+
+      &.single-row,
+      &.astro-row {
+        justify-content: center;
+      }
+    }
+
+    .chart-container {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+
+      &.wide {
+        flex: 1 1 100%;
+      }
+
+      h3 {
+        @include graph-question-text-style;
+        margin-bottom: 1rem;
+        color: $color-darkest-purple;
+      }
+    }
+  }
 }
