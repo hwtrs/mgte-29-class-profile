@@ -24,7 +24,15 @@
       @include description-style;
       font-size: 1.2rem;
       color: #5a5a5a;
+      margin-bottom: 0.5rem;
+    }
+
+    .respondent-count {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
       margin-bottom: 2rem;
+      text-align: center;
     }
 
     .charts-row {
