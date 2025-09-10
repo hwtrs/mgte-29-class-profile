@@ -57,6 +57,13 @@ const stickers = {
     className: "manchester-sticker",
     href: "https://www.youtube.com/watch?v=Zw6UpeFCeN0"
   },
+  mgte: {
+    src: "/landing/stickers/mgte/default.png",
+    hoverSrc: "/landing/stickers/mgte/hover.png",
+    activeSrc: "/landing/stickers/mgte/click.png",
+    className: "mgte-sticker",
+    href: "/mgte"
+  },
   pre_mgte: {
     src: "/landing/stickers/pre-mgte/default.png",
     hoverSrc: "/landing/stickers/pre-mgte/hover.png",
