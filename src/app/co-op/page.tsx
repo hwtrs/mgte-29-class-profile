@@ -1,11 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import './coop.scss';
 import GenericChart from '../../components/charts/GenericChart';
 
 export default function CoopPage() {
+  const [awkwardMoments, setAwkwardMoments] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function loadMoments() {
+      try {
+        const res = await fetch('/data/coop/awkward-moments.csv');
+        if (!res.ok) throw new Error('Failed to load csv data');
+        const text = await res.text();
+        // Split by line, trim, filter out empty lines
+        const moments = text
+          .trim()
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line.length > 0);
+        setAwkwardMoments(moments);
+      } catch (e) {
+        setAwkwardMoments(['Error loading csv data']);
+      }
+    }
+    loadMoments();
+  }, []);
+  
   return (
     <ProfileLayout>
       <div className="coop-container">
@@ -14,177 +36,213 @@ export default function CoopPage() {
           <span className="bg-lockers" />
           <span className="bg-title" />
         </section>
-        {/* Gender & Sexuality */}
-        <section className="coop-chart-section">
-          <h2 className="section-title">Gender & Sexuality</h2>
-          <p className="section-subtitle">In MGTE 29, our class is filled with Women in STEM!</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row">
-            <GenericChart
-              title="What Do You Identify As?"
-              dataUrl="/data/gender.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-            <GenericChart
-              title="What Is Your Sexuality?"
-              dataUrl="/data/sexuality.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-          </div>
-        </section>
 
-        {/* Ethnicity & Religion */}
+        {/* How did you get your job? */}
         <section className="coop-chart-section">
-          <h2 className="section-title">Ethnicity & Religion</h2>
-          <p className="section-subtitle">Diversity all around in MGTE!</p>
-          <p className="respondent-count">55 respondents</p>
+          <h2 className="section-title">X Marks the Spot</h2>
+          <p className="section-subtitle">Here's how people found their co-ops!</p>
+          <p className="respondent-count">number of respondents: 38</p>
           <div className="charts-row">
             <GenericChart
-              title="Which Ethnicities Do You Identify With?"
-              dataUrl="/data/ethnicity.csv"
-              chartType="BarChart"
-              options={{ 
-                legend: { position: 'none' },
-                colors: ['#F4D03F']
-              }}
-            />
-            <GenericChart
-              title="What Religion Do You Identify With?"
-              dataUrl="/data/religion.csv"
+              title="How did you get your job?"
+              dataUrl="/data/coop/getting-it.csv"
               chartType="ColumnChart"
+              xAxisLabel='Different Ways'
+              yAxisLabel='Number of People'
               options={{ 
                 legend: { position: 'none' },
-                colors: ['#F4D03F']
+                colors: ['#F4D03F'],
               }}
             />
           </div>
         </section>
 
-        {/* Hometown & Birth Country */}
+        {/* Application Count */}
         <section className="coop-chart-section">
-          <h2 className="section-title">Hometown & Birth Country</h2>
-          <p className="section-subtitle">For everyone from Toronto 'barrens from the 6ix'</p>
-          <p className="respondent-count">55 respondents</p>
+          <h2 className="section-title">Application Count</h2>
+          <p className="section-subtitle">Just apply, apply, APPLY!!!</p>
+          <p className="respondent-count">number of respondents: 39</p>
           <div className="charts-row">
             <GenericChart
-              title="Where Is Your Birth Country?"
-              dataUrl="/data/birth-country.csv"
-              chartType="GeoChart"
-              width="100%"
-              height="400px"
+              title="WaterlooWorks"
+              dataUrl="/data/coop/ww-apps.csv"
+              chartType="ColumnChart"
+              xAxisLabel='Number of Applications'
+              yAxisLabel='Number of People'
+              options={{ 
+                legend: { position: 'none' },
+                colors: ['#F4D03F'],
+              }}
+            />
+            <GenericChart
+              title="External"
+              dataUrl="/data/coop/external-apps.csv"
+              chartType="ColumnChart"
+              xAxisLabel='Number of Applications'
+              yAxisLabel='Number of People'
+              options={{ 
+                legend: { position: 'none' },
+                colors: ['#F9E79F'],
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Interviews */}
+        <section className="coop-chart-section">
+          <h2 className="section-title">Let's Talk Interviews!</h2>
+          <p className="section-subtitle">Excuse me, who is skipping their interviews??? 🧐</p>
+          <p className="respondent-count">number of respondents: 39 / 38</p>
+          <div className="charts-row">
+            <GenericChart
+              title="How many interviews did you get?"
+              dataUrl="/data/coop/interview-count.csv"
+              chartType="PieChart"
+              options={{ 
+                pieHole: 0.3,
+                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
+              }}
+            />
+            <GenericChart
+              title="Did you ever miss an interview?"
+              dataUrl="/data/coop/missed-an-interview.csv"
+              chartType="PieChart"
+              options={{ 
+                pieHole: 0.3,
+                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Awkward Interview Moments */}
+        <section className="coop-chart-section">
+          <h2 className="section-title">Awkward Interview Moments</h2>
+          <p className="section-subtitle">Oh come on... it can’t be that bad... 😬</p>
+          <p className="respondent-count">number of respondents: 20</p>
+          <div className="awkward-grid">
+            {awkwardMoments.map((moment, idx) => (
+              <div className="awkward-card" key={idx}>
+                {moment}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Co-op Acquired */}
+        <section className="coop-chart-section">
+          <h2 className="section-title">Co-op Acquired ✅</h2>
+          <p className="section-subtitle">So, when did you lock it in?</p>
+          <p className="respondent-count">number of respondents: 39 / 37</p>
+          <div className="charts-row">
+            <GenericChart
+              title="When did you get your co-op?"
+              dataUrl="/data/coop/when-did-you-get-it.csv"
+              chartType="LineChart"
+              xAxisLabel='Time'
+              yAxisLabel='Number of People'
+              options={{ 
+                legend: { position: 'none' },
+                colors: ['#F4D03F'],
+              }}
             />
           </div>
           <div className="charts-row">
             <GenericChart
-              title="Where Is Your Hometown?"
-              dataUrl="/data/hometown.csv"
+              title="When did you spill the news?"
+              dataUrl="/data/coop/when-did-you-tell.csv"
+              chartType="ColumnChart"
+              xAxisLabel='Time'
+              yAxisLabel='Number of People'
+              options={{ 
+                legend: { position: 'none' },
+                colors: ['#F9E79F'],
+              }}
+            />
+          </div>
+        </section>
+
+        {/* How did you get your job? */}
+        <section className="coop-chart-section">
+          <h2 className="section-title">MGTE Big Dreams</h2>
+          <p className="section-subtitle">IT'S ABOUT DRIVE, IT'S ABOUT POWER...</p>
+          <p className="respondent-count">number of respondents: 25</p>
+          <div className="charts-row">
+            <GenericChart
+              title="What is your dream company?"
+              dataUrl="/data/coop/dream-company.csv"
+              chartType="ColumnChart"
+              xAxisLabel='Company'
+              yAxisLabel='Number of People'
+              options={{ 
+                legend: { position: 'none' },
+                colors: ['#FCF3CF'],
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Our First Co-ops */}
+        <section className="coop-chart-section">
+          <h2 className="section-title">Our First Co-ops</h2>
+          <p className="section-subtitle">We all start somewhere!</p>
+          <p className="respondent-count">number of respondents: 38 / 38 / 30</p>
+          <div className="charts-row">
+            <GenericChart
+              title="Where were you located?"
+              dataUrl="/data/coop/job-location.csv"
+              chartType="PieChart"
+              options={{ 
+                pieHole: 0.3,
+                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
+              }}
+            />
+            <GenericChart
+              title="Where did you work from?"
+              dataUrl="/data/coop/job-type.csv"
+              chartType="PieChart"
+              options={{ 
+                pieHole: 0.3,
+                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
+              }}
+            />
+          </div>
+          <div className="charts-row">
+            <GenericChart
+              title="What was your job title?"
+              dataUrl="/data/coop/job-role.csv"
               chartType="BarChart"
+              xAxisLabel='Position'
+              yAxisLabel='Number of People'
               options={{ 
                 legend: { position: 'none' },
-                colors: ['#F4D03F']
+                colors: ['#F9E79F'],
               }}
             />
           </div>
         </section>
 
-        {/* Languages & Birth Year */}
+        {/* Honest Reviews */}
         <section className="coop-chart-section">
-          <h2 className="section-title">Languages & Birth Years</h2>
-          <p className="section-subtitle">Over 80% of MGTE can speak more than 1 language!</p>
-          <p className="respondent-count">55 respondents</p>
+          <h2 className="section-title">Honest Reviews</h2>
+          <p className="section-subtitle">Love it or hate it?</p>
+          <p className="respondent-count">number of respondents: 37</p>
           <div className="charts-row">
             <GenericChart
-              title="How Many Languages Do You Speak?"
-              dataUrl="/data/of-languages.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-            <GenericChart
-              title="When Were You Born?"
-              dataUrl="/data/birth-year.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-          </div>
-        </section>
-
-        {/* Our Families */}
-        <section className="coop-chart-section">
-          <h2 className="section-title">Our Families</h2>
-          <p className="section-subtitle">The apple doesn't fall far from the tree for MGTE 🍎</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row">
-            <GenericChart
-              title="Do Your Parents Work in the STEM Fields?"
-              dataUrl="/data/parents-in-stem.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-            <GenericChart
-              title="How Many Siblings Do You Have?"
-              dataUrl="/data/of-siblings.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-          </div>
-        </section>
-
-        {/* Astrological Signs */}
-        <section className="coop-chart-section">
-          <h2 className="section-title">Astrological Signs</h2>
-          <p className="section-subtitle">To those who are Scorpios, your parents got busy on Valentines Day!</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row astro-row">
-            <GenericChart
-              title="What Is Your Astrologic Sign?"
-              dataUrl="/data/astrological-sign.csv"
+              title="How much did you enjoy your co-op"
+              dataUrl="/data/coop/enjoyment.csv"
               chartType="BarChart"
+              xAxisLabel='Rating (out of 5)'
+              yAxisLabel='Number of People'
               options={{ 
                 legend: { position: 'none' },
-                colors: ['#F4D03F']
+                colors: ['#F9E79F'],
               }}
             />
           </div>
         </section>
 
-        {/* Relationships */}
-        <section className="coop-chart-section">
-          <h2 className="section-title">Relationships</h2>
-          <p className="section-subtitle">So someone is messy in MGTE...</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row single-row">
-            <GenericChart
-              title="Are You In A Relationship?"
-              dataUrl="/data/relationship-status.csv"
-              chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
-              }}
-            />
-          </div>
-        </section>
-
+        {/* Navigation Buttons */}
         <div className="nav-buttons">
           <a href="/lifestyle" className="nav-btn lifestyle-btn">
             &larr; Lifestyle

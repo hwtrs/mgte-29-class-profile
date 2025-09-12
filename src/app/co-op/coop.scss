@@ -115,7 +115,23 @@
     }
   }
 
-  
+  .awkward-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .awkward-card {
+    background: #FCF3CF;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(80, 60, 120, 0.08);
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    border: 2px solid #F4D03F;
+    font-family: $font-nunito;
+  }
+
   .nav-buttons {
     display: flex;
     justify-content: space-between;

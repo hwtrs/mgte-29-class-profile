@@ -5,7 +5,7 @@ import { Chart } from 'react-google-charts';
 import { ChartDataArray } from './types';
 import './DemographicChart.scss';
 
-export type ChartType = 'PieChart' | 'BarChart' | 'ColumnChart' | 'GeoChart';
+export type ChartType = 'PieChart' | 'BarChart' | 'ColumnChart' | 'GeoChart' | 'LineChart';
 
 interface GenericChartProps {
   title: string;
@@ -15,6 +15,8 @@ interface GenericChartProps {
   options?: Record<string, any>;
   width?: string;
   height?: string;
+  xAxisLabel?: string;
+  yAxisLabel?: string;
 }
 
 const GenericChart: React.FC<GenericChartProps> = ({
@@ -25,6 +27,8 @@ const GenericChart: React.FC<GenericChartProps> = ({
   options = {},
   width = '100%',
   height = '400px',
+  xAxisLabel,
+  yAxisLabel,
 }) => {
   const [data, setData] = useState<ChartDataArray>([]);
   const [loading, setLoading] = useState(true);
@@ -52,10 +56,16 @@ const GenericChart: React.FC<GenericChartProps> = ({
   }, [dataUrl]);
 
   const defaultOptions = {
-    title: title,
+    // title: title,
     backgroundColor: 'transparent',
-    legend: { position: chartType === 'GeoChart' ? 'none' : 'right' },
+    legend: { position: chartType === 'GeoChart' ? 'none' : chartType == 'PieChart' ? 'bottom' : 'right' },
     chartArea: { width: '70%', height: '70%' },
+    ...(chartType === 'BarChart' || chartType === 'ColumnChart'
+      ? {
+          hAxis: { title: xAxisLabel || 'X Axis' },
+          vAxis: { title: yAxisLabel || 'Y Axis' },
+        }
+      : {}),
     ...options,
   };
 
