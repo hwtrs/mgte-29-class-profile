@@ -3,8 +3,8 @@
 .landing-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - var(--header-height));
-  margin-top: var(--header-height);
+  height: 100vh;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
 
   .book-container {
     position: relative;
-    width: 100vw;
+    width: 100%;
     max-width: 1165px;
 
     @media (min-width: $breakpoint-xl) {
@@ -212,8 +212,8 @@
   // Combined media queries
   @media (max-width: $breakpoint-md) {
     background-image: url("/landing/lockers_md.jpg");
-    height: calc(100vh - var(--header-height-md));
-    margin-top: var(--header-height-md);
+    height: 100vh;
+    margin-top: 0;
 
     .book-container {
       >img:first-child {
@@ -271,8 +271,8 @@
 
   @media (max-width: $breakpoint-sm) {
     background-image: url("/landing/lockers_sm.jpg");
-    height: calc(100vh - var(--header-height-sm));
-    margin-top: var(--header-height-sm);
+    height: 100vh;
+    margin-top: 0;
 
     .book-container {
       >img:first-child {

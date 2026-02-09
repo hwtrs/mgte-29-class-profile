@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import "./landing.scss";
 import stickers from "../data/stickers";
 import { useBreakpoint } from "../utils/useBreakpoint";
@@ -13,9 +14,9 @@ const Home = () => {
   return (
     <div className="landing-container">
       <div className="book-container">
-        <img src="/landing/book.png" />
-        <img src="/landing/corner_book_purple.png"/>
-        <img src="/landing/corner_paper.png"/>
+        <img src="/landing/book.png" alt="MGTE 29 Class Profile book" />
+        <img src="/landing/corner_book_purple.png" alt="Book corner decoration" />
+        <img src="/landing/corner_paper.png" alt="Paper decoration" />
 
         <div className="stickers">
           {Object.values(stickers).map((sticker) => {
@@ -31,8 +32,10 @@ const Home = () => {
               src = sticker.hoverSrc;
             }
 
+            const stickerLabel = sticker.className.replace('-sticker', '').replace('-', ' ');
+
             return (
-              <a
+              <Link
                 href={sticker.href}
                 key={sticker.className}
                 className={sticker.className}
@@ -42,8 +45,8 @@ const Home = () => {
                 onMouseUp={() => setClicked(null)}
                 onBlur={() => setClicked(null)}
               >
-                <img src={src} />
-              </a>
+                <img src={src} alt={stickerLabel} />
+              </Link>
             );
           })}
         </div>

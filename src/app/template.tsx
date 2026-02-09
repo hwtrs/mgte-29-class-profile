@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Template({ children }: { children: React.ReactNode }) {
-    // Use a simple state to trigger animation or just rely on CSS keyframes on mount
+    const pathname = usePathname();
+    const isHome = pathname === "/";
+
     return (
-        <div className="page-transition-wrapper">
+        <div className={isHome ? "page-transition-wrapper home" : "page-transition-wrapper"}>
             {children}
         </div>
     );

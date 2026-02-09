@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaBars as HamburgerIcon } from 'react-icons/fa';
 import './header.scss';
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
         setTimeout(() => {
             setMenuOpen(false);
             setIsClosing(false);
-        }, 300); // Match animation duration
+        }, 300);
     };
 
     const toggleMenu = () => {
@@ -34,9 +35,16 @@ const Header: React.FC = () => {
     const pathname = usePathname();
 
     const isAboutPage = pathname === '/about';
+    const isHomePage = pathname === '/';
+
+    // Reset header visibility on route change
+    useEffect(() => {
+        setIsVisible(true);
+        setLastScrollY(0);
+    }, [pathname]);
 
     useEffect(() => {
-        if (isAboutPage) {
+        if (isAboutPage || isHomePage) {
             setIsVisible(true);
             return;
         }
@@ -60,10 +68,10 @@ const Header: React.FC = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY, isAboutPage]);
+    }, [lastScrollY, isAboutPage, isHomePage]);
 
     return (
-        <header className={`header ${!isVisible ? 'header--hidden' : ''}`}>
+        <header className={`header ${!isVisible ? 'header--hidden' : ''} ${isHomePage ? 'header--home' : ''}`}>
             <button
                 className="header_hamburger"
                 onClick={toggleMenu}
@@ -81,9 +89,9 @@ const Header: React.FC = () => {
                         <ul>
                             {menu_items.map((item, index) => (
                                 <li key={index}>
-                                    <a href={item === 'Home' ? "/" : `/${item.replace(" ", "-").toLowerCase()}`} onClick={closeMenu}>
+                                    <Link href={item === 'Home' ? "/" : `/${item.replace(" ", "-").toLowerCase()}`} onClick={closeMenu}>
                                         {item}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

@@ -12,6 +12,7 @@ interface GenericChart2Props {
   subtitle?: string;
   dataUrl: string;
   chartType: ChartType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: Record<string, any>;
   width?: string;
   height?: string;
@@ -78,8 +79,8 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
     chartArea: { width: '70%', height: '70%' },
     ...(chartType === 'BarChart' || chartType === 'ColumnChart' || chartType === 'LineChart'
       ? {
-          hAxis: { title: xAxisLabel || 'X Axis' },
-          vAxis: { title: yAxisLabel || 'Y Axis' },
+          hAxis: { title: xAxisLabel || '' },
+          vAxis: { title: yAxisLabel || '' },
         }
       : {}),
     ...options,
@@ -89,7 +90,7 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
     return (
       <div className="chart-container">
         <h3 className="chart-title">{title}</h3>
-        <div className="loading-state">Loading...</div>
+        <div className="loading-state"><div className="loading-spinner" /><span className="loading-text">Loading chart...</span></div>
       </div>
     );
   }
@@ -98,7 +99,7 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
     return (
       <div className="chart-container">
         <h3 className="chart-title">{title}</h3>
-        <div className="error-state">Error: {error}</div>
+        <div className="error-state"><span className="error-title">Unable to load chart</span><span className="error-message">{error}</span></div>
       </div>
     );
   }

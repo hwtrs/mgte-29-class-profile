@@ -3,9 +3,10 @@
 .premgte-container {
   width: 100%;
   padding: 2rem;
-  background-color: #EFE7E0;
+  background-color: var(--color-bg-page);
 
   @import "../../components/layout/SectionStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
 
   .premgte-chart-section {
     max-width: 1200px;
@@ -18,7 +19,7 @@
 
     .section-subtitle {
       font-size: 1.2rem;
-      color: #5a5a5a;
+      color: var(--color-text-light);
       margin-bottom: 0.5rem;
     }
 
@@ -37,7 +38,7 @@
       background: white;
       border-radius: 12px;
       padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px var(--color-shadow);
       flex: 1;
       min-width: 300px;
       text-align: center;
@@ -75,12 +76,11 @@
     }
   }
 
-  // Word cloud styling
   .dream-jobs-wordcloud {
     background: white;
     border-radius: 12px;
     padding: 3rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--color-shadow);
     min-height: 300px;
     display: flex;
     align-items: center;
@@ -120,7 +120,6 @@
     }
   }
 
-  // Advice cards styling
   .advice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -132,7 +131,7 @@
     background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--color-shadow);
     border-left: 4px solid #4CAF50;
 
     p {

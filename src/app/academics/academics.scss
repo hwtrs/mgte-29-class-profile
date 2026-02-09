@@ -1,7 +1,7 @@
 @use "../globals.scss" as *;
 
 .academics-container {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   background: url("/img/dotted-bg.png") repeat;
@@ -12,56 +12,15 @@
   top: 0;
   left: 0;
 
-  .background {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .bg-banner {
-    position: absolute;
-    top: clamp(14rem, 46vh, 36rem);
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("/img/banner-bg-sm.png") no-repeat center top;
-    background-size: contain;
-    z-index: 3;
-  }
-
-  .bg-lockers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    // height: 75%;
-    height: clamp(300px, 70vh, 800px);
-    background: url("/img/banner-top.jpg") no-repeat center top;
-    background-size: cover;
-    z-index: 2;
-  }
+  @import "../../components/layout/BannerStyles.scss";
 
   .bg-title {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 32%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1600 / 600;
     background: url("/academics/academics-banner.png") no-repeat center/contain;
-    z-index: 3;
   }
 }
 
 @import "../../components/layout/SectionStyles.scss";
-
-// Local override for charts-row gap if specifically needed for academics, 
-// but using the shared one (gap: 2rem) is likely better. 
-// The original here was gap: 20px, shared is 20px ~ 1.25rem or 2rem. 
-// I will let it inherit from standard first.
+@import "../../components/layout/NavButtons.scss";
 
 .academics-section {
   max-width: 1200px;
@@ -69,22 +28,6 @@
 }
 
 .section-title {
-  // Override margin-top to match existing structure if needed, but shared uses -6rem for first child usually.
-  // Academics originally had margin-top: -6rem on .section-title directly? 
-  // Wait, original WAS .section-title { margin-top: -6rem; }
-  // Shared has margin: 0 0 0.5rem 0. 
-  // We should apply the negative margin to the FIRST section title or the container's first child.
-  // Let's keep the local override here to be safe for now, as it was applied generally to all .section-titles in the original file? 
-  // Actually, usually only the first one needs the negative margin to pull it up over the banner.
-
-  // Looking at original file:
-  // .section-title { margin-top: -6rem; ... }
-  // This applied to ALL section titles. That seems wrong if they are stacked?
-  // Oh, subsequent sections have <h2 ... style={{ paddingTop: '5rem' }}> in the JSX.
-  // So valid to keep it here or restrict to first-child.
-  // Let's stick with the shared class but re-add the margin-top property locally.
-
-  // Only pull the first title up to overlap the banner
   &:first-of-type {
     margin-top: -6rem;
   }
@@ -98,46 +41,15 @@
 }
 
 .nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 4rem auto 2rem auto;
-  padding: 0 2rem 4rem 2rem;
-  bottom: 0;
-  background: transparent;
-  z-index: 10;
-
-  .nav-btn {
-    color: white !important;
-    display: inline-block;
-    padding: 0.5rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 2rem;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
-    border: 3px solid transparent;
-    text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-  }
-
   .about-btn {
-    background: #c7b6e5;
+    background: var(--color-purple-light);
     color: #3d2670;
     border-color: #6d4fa3;
-    box-shadow: 2px 2px 6px #6d4fa340;
   }
 
   .gallery-btn {
-    background: #F9E8AA;
+    background: var(--color-yellow-light);
     color: #2d3d1a;
     border-color: #E9CB6D;
-    box-shadow: 2px 2px 6px #5a7d4a40;
-  }
-
-  .nav-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.18);
   }
 }

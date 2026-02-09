@@ -1,6 +1,7 @@
 'use client';
 
 import React, {useState, useEffect} from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import './coop.scss';
 import GenericChart from '../../components/charts/GenericChart';
@@ -21,7 +22,7 @@ export default function CoopPage() {
           .map(line => line.trim())
           .filter(line => line.length > 0);
         setAwkwardMoments(moments);
-      } catch (e) {
+      } catch {
         setAwkwardMoments(['Error loading csv data']);
       }
     }
@@ -40,7 +41,7 @@ export default function CoopPage() {
         {/* How did you get your job? */}
         <section className="coop-chart-section">
           <h2 className="section-title">X Marks the Spot</h2>
-          <p className="section-subtitle">Here's how people found their co-ops!</p>
+          <p className="section-subtitle">Here&apos;s how people found their co-ops!</p>
           <p className="respondent-count">number of respondents: 38</p>
           <div className="charts-row">
             <GenericChart
@@ -90,7 +91,7 @@ export default function CoopPage() {
 
         {/* Interviews */}
         <section className="coop-chart-section">
-          <h2 className="section-title">Let's Talk Interviews!</h2>
+          <h2 className="section-title">Let&apos;s Talk Interviews!</h2>
           <p className="section-subtitle">Excuse me, who is skipping their interviews??? 🧐</p>
           <p className="respondent-count">number of respondents: 39 / 38</p>
           <div className="charts-row">
@@ -165,7 +166,7 @@ export default function CoopPage() {
         {/* How did you get your job? */}
         <section className="coop-chart-section">
           <h2 className="section-title">MGTE Big Dreams</h2>
-          <p className="section-subtitle">IT'S ABOUT DRIVE, IT'S ABOUT POWER...</p>
+          <p className="section-subtitle">IT&apos;S ABOUT DRIVE, IT&apos;S ABOUT POWER...</p>
           <p className="respondent-count">number of respondents: 25</p>
           <div className="charts-row">
             <GenericChart
@@ -244,12 +245,12 @@ export default function CoopPage() {
 
         {/* Navigation Buttons */}
         <div className="nav-buttons">
-          <a href="/lifestyle" className="nav-btn lifestyle-btn">
+          <Link href="/lifestyle" className="nav-btn nav-btn--purple">
             &larr; Lifestyle
-          </a>
-          <a href="/pre-mgte" className="nav-btn pre-mgte-btn">
+          </Link>
+          <Link href="/pre-mgte" className="nav-btn nav-btn--green">
             Pre-MGTE &rarr;
-          </a>
+          </Link>
         </div>
       </div>
     </ProfileLayout>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import "./academics.scss"
 import GenericChart2 from '../../components/charts/MultiSeriesChart';
@@ -89,7 +90,7 @@ export default function AcademicsPage() {
 
           {/* Most and least useful courses */}
           <h2 className="section-title">Most and Least Useful Courses</h2>
-          <p className="section-subtitle">Turns out, some courses weren't just academic trauma</p>
+          <p className="section-subtitle">Turns out, some courses weren&apos;t just academic trauma</p>
           <GenericChart2
             title="Least vs. Most Useful Courses"
             subtitle="number of respondents: 42"
@@ -148,7 +149,7 @@ export default function AcademicsPage() {
           />
 
           {/* mgte's favs */}
-          <h2 className="section-title">MGTE's Favourites</h2>
+          <h2 className="section-title">MGTE&apos;s Favourites</h2>
           <p className="section-subtitle">The things that made our days in the dungeons of RCH a bit more bearable &lt;3 </p>
           <div className="charts-row">
             <GenericChart
@@ -186,7 +187,7 @@ export default function AcademicsPage() {
           />
 
           {/* Preferred tech */}
-          <h2 className="section-title">MGTE's Preferred Tech</h2>
+          <h2 className="section-title">MGTE&apos;s Preferred Tech</h2>
           <p className="section-subtitle">Call us the Lorax cause MGTE is saving the trees.</p>
           <div className="charts-row">
             <GenericChart
@@ -240,8 +241,8 @@ export default function AcademicsPage() {
           </div>
 
           {/* Studiousness  of MGTE */}
-          <h2 className="section-title">How Studious is MGTE '29</h2>
-          <p className="section-subtitle">Late nights, what's' the price?</p>
+          <h2 className="section-title">How Studious is MGTE &apos;29</h2>
+          <p className="section-subtitle">Late nights, what&apos;s the price?</p>
           <div className="charts-row">
             <GenericChart
               title="On average, how many hours did you study per day?"
@@ -281,7 +282,7 @@ export default function AcademicsPage() {
 
           {/* Higher education */}
           <h2 className="section-title">Pursuing Higher Education</h2>
-          <p className="section-subtitle">Because five years just wasn't enough.</p>
+          <p className="section-subtitle">Because five years just wasn&apos;t enough.</p>
           <GenericChart
             title="Are you interested in doing a Masters or pursuing higher education?"
             subtitle="number of respondents: 43"
@@ -293,8 +294,8 @@ export default function AcademicsPage() {
           />
 
           {/* Fake eng */}
-          <h2 className="section-title">Least "Engineering" Eng Program</h2>
-          <p className="section-subtitle">Let's refute the allegations...which eng is the FAKEST?</p>
+          <h2 className="section-title">Least &quot;Engineering&quot; Eng Program</h2>
+          <p className="section-subtitle">Let&apos;s refute the allegations...which eng is the FAKEST?</p>
           <GenericChart
             title="What's the fakest engineering program?"
             subtitle="number of respondents: 40"
@@ -315,7 +316,7 @@ export default function AcademicsPage() {
 
           {/* Rating classes */}
           <h2 className="section-title">Rating Our Classes</h2>
-          <p className="section-subtitle">The radar charts represent a course's rating with 1 - Terrible,  5 - Awesome where 1A - Purple, 1B - Blue.</p>
+          <p className="section-subtitle">The radar charts represent a course&apos;s rating with 1 - Terrible,  5 - Awesome where 1A - Purple, 1B - Blue.</p>
           <img src="/academics/1a.png" alt="1A Classes" className="academics-imgs"/>
           <img src="/academics/1b.png" alt="1B Classes" className="academics-imgs"/>
 
@@ -339,12 +340,12 @@ export default function AcademicsPage() {
 
         {/* Buttons */}
         <div className="nav-buttons">
-          <a href="/demographics" className="nav-btn gallery-btn">
+          <Link href="/demographics" className="nav-btn nav-btn--yellow">
             &larr; Demographics
-          </a>
-          <a href="/lifestyle" className="nav-btn about-btn">
+          </Link>
+          <Link href="/lifestyle" className="nav-btn nav-btn--purple">
             Lifestyle &rarr;
-          </a>
+          </Link>
         </div>
 
       </div>

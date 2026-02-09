@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import './demographics.scss';
 import GenericChart from '../../components/charts/GenericChart';
@@ -242,12 +243,12 @@ export default function DemographicsPage() {
           </div>
           {/* Navigation Buttons */}
           <div className="nav-buttons">
-            <a href="/about" className="nav-btn about-btn">
+            <Link href="/about" className="nav-btn nav-btn--purple">
               &larr; About
-            </a>
-            <a href="/academics" className="nav-btn academics-btn">
+            </Link>
+            <Link href="/academics" className="nav-btn nav-btn--blue">
               Academics &rarr;
-            </a>
+            </Link>
           </div>
         </section>
 

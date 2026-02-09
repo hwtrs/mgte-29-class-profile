@@ -1,7 +1,7 @@
 @use "../globals.scss" as *;
 
 .demographics-container {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   background: url("/img/dotted-bg.png") repeat;
@@ -12,33 +12,11 @@
   top: 0;
   left: 0;
 
-  .background {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
+  @import "../../components/layout/BannerStyles.scss";
 
   .bg-banner {
-    position: absolute;
-    top: clamp(14rem, 46vh, 36rem);
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: url("/img/banner-bg.png") no-repeat center top;
     background-size: cover;
-    z-index: 3;
-  }
-
-  .bg-lockers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: clamp(300px, 70vh, 800px);
-    background: url("/img/banner-top.jpg") no-repeat center top;
-    background-size: cover;
-    z-index: 2;
   }
 
   .title-decor {
@@ -178,14 +156,12 @@
   padding: 0 2rem;
 
   @import "../../components/layout/SectionStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
 
-  // Override specific to this page if needed, but inheriting mainly
   .section-title {
-    // Ensuring title matches shared style but allowing local overrides if strictly necessary
     font-family: $font-nunito;
   }
 
-  // Specific override for the first section title to match Academics page spacing
   .section-title:first-of-type {
     margin-top: -6rem;
   }
@@ -246,9 +222,9 @@
   }
 
   .chart-container {
-    border: 3px solid #E8DDD4;
+    border: 3px solid var(--color-border-card);
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--color-shadow);
   }
 
   .pie-chart-wrapper {
@@ -270,7 +246,7 @@
     background: white;
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--color-shadow);
     margin-top: 2rem;
     margin-bottom: 0;
 
@@ -329,42 +305,14 @@
   }
 
   .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 2rem auto 2rem auto;
-    padding: 0 2rem 4rem 2rem;
-    background: transparent;
-    z-index: 10;
-
-    .nav-btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      font-size: 1.2rem;
-      font-family: $font-nunito;
-      font-weight: 600;
-      border-radius: 2rem;
-      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
-      border: 3px solid transparent;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.18);
-      }
-    }
-
     .about-btn {
-      background: #c7b6e5;
+      background: var(--color-purple-light);
       color: #3d2670;
       border-color: #6d4fa3;
     }
 
     .academics-btn {
-      background: #83B8E9;
+      background: var(--color-blue-primary);
       color: #2d3d1a;
       border-color: #316798;
     }

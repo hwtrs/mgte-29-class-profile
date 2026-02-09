@@ -128,7 +128,7 @@ export default function PreMgtePage() {
         {/* High School Passions */}
         <section className="premgte-chart-section">
           <h2 className="section-title">High School Passions</h2>
-          <p className="section-subtitle">What subjects got our hearts racing and minds working the most in high school and why it's important as it lay the foundations for our University studies!</p>
+          <p className="section-subtitle">What subjects got our hearts racing and minds working the most in high school and why it&apos;s important as it lay the foundations for our University studies!</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row">
             <GenericChart
@@ -210,28 +210,28 @@ export default function PreMgtePage() {
           <p className="section-subtitle">Words of wisdom from MGTE students</p>
           <div className="advice-grid">
             <div className="advice-card">
-              <p>"Don't be afraid to take risks and try new things"</p>
+              <p>&quot;Don&apos;t be afraid to take risks and try new things&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Focus on learning, not just grades"</p>
+              <p>&quot;Focus on learning, not just grades&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Build meaningful relationships with your peers"</p>
+              <p>&quot;Build meaningful relationships with your peers&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Don't compare yourself to others"</p>
+              <p>&quot;Don&apos;t compare yourself to others&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Ask for help when you need it"</p>
+              <p>&quot;Ask for help when you need it&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Enjoy the journey, not just the destination"</p>
+              <p>&quot;Enjoy the journey, not just the destination&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Stay curious and keep asking questions"</p>
+              <p>&quot;Stay curious and keep asking questions&quot;</p>
             </div>
             <div className="advice-card">
-              <p>"Time management is everything"</p>
+              <p>&quot;Time management is everything&quot;</p>
             </div>
           </div>
         </section>
