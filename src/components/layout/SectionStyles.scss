@@ -25,12 +25,16 @@
     margin-bottom: 1.5rem;
 }
 
+.section-title:not(:first-of-type) {
+    padding-top: 4rem;
+}
+
 .charts-row {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 
     >* {
         flex: 1 1 45%;

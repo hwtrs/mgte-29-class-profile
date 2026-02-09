@@ -88,7 +88,7 @@ export default function AcademicsPage() {
           />
 
           {/* Most and least useful courses */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Most and Least Useful Courses</h2>
+          <h2 className="section-title">Most and Least Useful Courses</h2>
           <p className="section-subtitle">Turns out, some courses weren't just academic trauma</p>
           <GenericChart2
             title="Least vs. Most Useful Courses"
@@ -118,7 +118,7 @@ export default function AcademicsPage() {
           />
 
           {/* Most interesting and boring courses */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Most Interesting and Most Boring Courses</h2>
+          <h2 className="section-title">Most Interesting and Most Boring Courses</h2>
           <p className="section-subtitle">Catching up on sleep &gt; Going to MSE 131 at 9:00 AM</p>
           <GenericChart2
             title="Most Boring vs. Most Interesting Courses"
@@ -148,7 +148,7 @@ export default function AcademicsPage() {
           />
 
           {/* mgte's favs */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>MGTE's Favourites</h2>
+          <h2 className="section-title">MGTE's Favourites</h2>
           <p className="section-subtitle">The things that made our days in the dungeons of RCH a bit more bearable &lt;3 </p>
           <div className="charts-row">
             <GenericChart
@@ -173,7 +173,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Aftermath of physics */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Aftermath of Physics</h2>
+          <h2 className="section-title">Aftermath of Physics</h2>
           <p className="section-subtitle">The exam that made us question everything, but our Physics prof ended up coming in clutch.</p>
           <GenericChart
             title="How much did your PHYS 115 Final Exam Mark increase after scale (%)"
@@ -186,7 +186,7 @@ export default function AcademicsPage() {
           />
 
           {/* Preferred tech */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>MGTE's Preferred Tech</h2>
+          <h2 className="section-title">MGTE's Preferred Tech</h2>
           <p className="section-subtitle">Call us the Lorax cause MGTE is saving the trees.</p>
           <div className="charts-row">
             <GenericChart
@@ -210,7 +210,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Attendance */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Attendance Rates</h2>
+          <h2 className="section-title">Attendance Rates</h2>
           <p className="section-subtitle">No iClicker? Say less.</p>
           <div className="charts-row">
             <GenericChart
@@ -240,7 +240,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Studiousness  of MGTE */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>How Studious is MGTE '29</h2>
+          <h2 className="section-title">How Studious is MGTE '29</h2>
           <p className="section-subtitle">Late nights, what's' the price?</p>
           <div className="charts-row">
             <GenericChart
@@ -267,7 +267,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Extracurriculars */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Extracurriculars</h2>
+          <h2 className="section-title">Extracurriculars</h2>
           <p className="section-subtitle">Shoutout Industry 4.0 Design Team ⚙️📢‼️</p>
           <GenericChart
             title="How many extracurriculars are you in?"
@@ -280,7 +280,7 @@ export default function AcademicsPage() {
           />
 
           {/* Higher education */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Pursuing Higher Education</h2>
+          <h2 className="section-title">Pursuing Higher Education</h2>
           <p className="section-subtitle">Because five years just wasn't enough.</p>
           <GenericChart
             title="Are you interested in doing a Masters or pursuing higher education?"
@@ -293,7 +293,7 @@ export default function AcademicsPage() {
           />
 
           {/* Fake eng */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Least "Engineering" Eng Program</h2>
+          <h2 className="section-title">Least "Engineering" Eng Program</h2>
           <p className="section-subtitle">Let's refute the allegations...which eng is the FAKEST?</p>
           <GenericChart
             title="What's the fakest engineering program?"
@@ -309,18 +309,18 @@ export default function AcademicsPage() {
           />
 
           {/* Prof quotes */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Best Professor Quotes</h2>
+          <h2 className="section-title">Best Professor Quotes</h2>
           <p className="section-subtitle">Zero Context</p>
           <img src="/academics/prof-quotes.png" alt="Prof Quotes" className="academics-imgs"/>
 
           {/* Rating classes */}
-          <h2 className="section-title" style={{ paddingTop: '8rem' }}>Rating Our Classes</h2>
+          <h2 className="section-title">Rating Our Classes</h2>
           <p className="section-subtitle">The radar charts represent a course's rating with 1 - Terrible,  5 - Awesome where 1A - Purple, 1B - Blue.</p>
           <img src="/academics/1a.png" alt="1A Classes" className="academics-imgs"/>
           <img src="/academics/1b.png" alt="1B Classes" className="academics-imgs"/>
 
           {/* Habits vs academics */}
-          <h2 className="section-title" style={{ paddingTop: '8rem' }}>Habits vs. Academic Performance</h2>
+          <h2 className="section-title">Habits vs. Academic Performance</h2>
           <p className="section-subtitle">Turns out more sleep equals higher grades!</p>
           <GenericChart2
             title="How do our daily habits relate to our grades?"

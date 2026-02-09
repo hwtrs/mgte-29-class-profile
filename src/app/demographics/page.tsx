@@ -59,7 +59,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Ethnicity & Religion */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Ethnicity & Religion</h2>
+          <h2 className="section-title">Ethnicity & Religion</h2>
           <p className="section-subtitle">Diversity all around in MGTE!</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row">
@@ -88,7 +88,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Hometown & Birth Country */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Hometown & Birth Country</h2>
+          <h2 className="section-title">Hometown & Birth Country</h2>
           <p className="section-subtitle">For everyone from Toronto &apos;barrens from the 6ix&apos;</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row single-chart">
@@ -131,7 +131,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Languages & Birth Year */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Languages & Birth Years</h2>
+          <h2 className="section-title">Languages & Birth Years</h2>
           <p className="section-subtitle">Over 80% of MGTE can speak more than 1 language!</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row">
@@ -163,7 +163,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Our Families */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Our Families</h2>
+          <h2 className="section-title">Our Families</h2>
           <p className="section-subtitle">The apple doesn&apos;t fall far from the tree for MGTE</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row">
@@ -198,7 +198,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Astrological Signs */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Astrological</h2>
+          <h2 className="section-title">Astrological</h2>
           <p className="section-subtitle">To those who are Scorpios, your parents got busy on Valentines Day!</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row single-chart">
@@ -216,7 +216,7 @@ export default function DemographicsPage() {
           </div>
 
           {/* Relationships */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Relationships</h2>
+          <h2 className="section-title">Relationships</h2>
           <p className="section-subtitle">So someone is messy in MGTE...</p>
           <p className="respondent-count">55 respondents</p>
           <div className="charts-row relationship-row">
