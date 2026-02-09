@@ -6,7 +6,7 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 4rem;
+  margin-bottom: 0;
 
   @media (max-width: $breakpoint-md) {
     padding: 1.5rem;
@@ -18,16 +18,17 @@
 
   .chart-title {
     @include section-title-style;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0 !important;
     color: black !important;
+    font-size: 1.25rem;
   }
 
   .chart-subtitle {
     @include description-style;
-    text-align: center;
+    text-align: left;
     margin-bottom: 1rem;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .chart-wrapper {

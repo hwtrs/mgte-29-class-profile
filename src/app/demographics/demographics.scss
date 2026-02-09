@@ -1,70 +1,372 @@
 @use "../globals.scss" as *;
 
 .demographics-container {
-  width: 100%;
-  padding: 2rem;
-  background-color: #EFE7E0;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  background: url("/img/dotted-bg.png") repeat;
+  background-size: contain;
+  font-family: $font-nunito;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  // Reset old layout styles
-  // ...existing code...
-  // Remove .demographics-content, .demographics-header, .charts-layout, placeholders
+  .background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-  .demographics-chart-section {
-    max-width: 1200px;
-    margin: 4rem auto;
+  .bg-banner {
+    position: absolute;
+    top: clamp(14rem, 46vh, 36rem);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/img/banner-bg.png") no-repeat center top;
+    background-size: cover;
+    z-index: 3;
+  }
 
-    .section-title {
-      @include section-title-style;
-      font-size: 2.5rem;
-      color: $color-darkest-purple;
-      margin-bottom: 0.5rem;
+  .bg-lockers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(300px, 70vh, 800px);
+    background: url("/img/banner-top.jpg") no-repeat center top;
+    background-size: cover;
+    z-index: 2;
+  }
+
+  .title-decor {
+    position: absolute;
+
+    &.decor-globe {
+      left: -60px;
+      top: 261px;
+      width: 190px;
+      height: 190px;
+      transform: rotate(-8.59deg);
+      z-index: 5;
     }
 
-    .section-subtitle {
-      @include description-style;
-      font-size: 1.2rem;
-      color: #5a5a5a;
-      margin-bottom: 0.5rem;
+    &.decor-star-18 {
+      left: 120px;
+      top: 320px;
+      width: 75px;
+      height: 75px;
+      transform: rotate(210deg);
+      z-index: 5;
     }
 
-    .respondent-count {
-      font-size: 0.9rem;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 2rem;
-      text-align: center;
+    &.decor-star-19 {
+      left: -15px;
+      top: 170px;
+      width: 100px;
+      height: 100px;
+      transform: rotate(30deg);
+      z-index: 5;
     }
 
-    .charts-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
+    &.decor-group {
+      right: 20px;
+      top: 174px;
+      width: 184px;
+      height: auto;
+      transform: rotate(17deg);
+      z-index: 3;
+    }
 
-      &.single-row,
-      &.astro-row {
-        justify-content: center;
+    &.decor-star-8 {
+      right: -30px;
+      top: 296px;
+      width: 94px;
+      height: 94px;
+      transform: rotate(32deg);
+      z-index: 5;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      &.decor-globe {
+        width: 120px;
+        height: 120px;
+        left: -40px;
+        top: 200px;
+      }
+
+      &.decor-star-18 {
+        width: 50px;
+        height: 50px;
+        left: 80px;
+        top: 260px;
+      }
+
+      &.decor-star-19 {
+        width: 40px;
+        height: 40px;
+        left: 130px;
+        top: 200px;
+      }
+
+      &.decor-group {
+        width: 120px;
+        right: 50px;
+        left: auto;
+        top: 140px;
+      }
+
+      &.decor-star-8 {
+        width: 60px;
+        height: 60px;
+        right: -20px;
+        left: auto;
+        top: 230px;
       }
     }
 
-    .chart-container {
-      background: white;
-      border-radius: 12px;
+    @media (max-width: $breakpoint-sm) {
+
+      &.decor-globe,
+      &.decor-star-18,
+      &.decor-star-19,
+      &.decor-group,
+      &.decor-star-8 {
+        display: none;
+      }
+    }
+  }
+
+  .bg-title {
+    content: '';
+    position: absolute;
+    left: 95px;
+    top: 118px;
+    width: 1293px;
+    height: 342px;
+    background: url("/demographics/title.png") no-repeat center/contain;
+    z-index: 4;
+
+    @media (max-width: $breakpoint-xl) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1293px;
+      height: auto;
+      aspect-ratio: 1293 / 342;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      top: 150px;
+      width: 85%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      top: 120px;
+      width: 90%;
+    }
+  }
+}
+
+.demographics-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem;
+
+  @import "../../components/layout/SectionStyles.scss";
+
+  // Override specific to this page if needed, but inheriting mainly
+  .section-title {
+    // Ensuring title matches shared style but allowing local overrides if strictly necessary
+    font-family: $font-nunito;
+  }
+
+  // Specific override for the first section title to match Academics page spacing
+  .section-title:first-of-type {
+    margin-top: -6rem;
+  }
+
+  .relationship-row {
+    position: relative;
+    justify-content: center !important;
+    align-items: center;
+
+
+  }
+
+  .hearts-container {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 160px;
+    flex: none !important;
+    min-width: unset !important;
+    max-width: unset !important;
+
+    .heart {
+      position: absolute;
+
+      &.heart-1 {
+        width: 90px;
+        height: auto;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-60%) rotate(-15deg);
+        z-index: 3;
+      }
+
+      &.heart-2 {
+        width: 55px;
+        height: auto;
+        left: 75px;
+        top: 50%;
+        transform: translateY(-25%) rotate(10deg);
+        z-index: 2;
+      }
+
+      &.heart-3 {
+        width: 40px;
+        height: auto;
+        left: 45px;
+        top: 50%;
+        transform: translateY(15%) rotate(-8deg);
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  .chart-container {
+    border: 3px solid #E8DDD4;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .pie-chart-wrapper {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 550px;
+
+    .chart-highlight {
+      position: absolute;
+      z-index: 10;
+      width: 30px;
+      height: auto;
+      pointer-events: none;
+    }
+  }
+
+  .hometown-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 0;
+
+    .chart-question {
+      font-family: $font-nunito;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: left;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .word-cloud {
+      position: relative;
+      width: 100%;
+      height: 300px;
       padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      min-width: 300px;
-      text-align: center;
 
-      &.wide {
-        flex: 1 1 100%;
-      }
+      .city {
+        font-family: $font-nunito;
+        font-weight: 700;
+        color: #6B5B95;
+        transition: all 0.2s ease;
+        cursor: default;
 
-      h3 {
-        @include graph-question-text-style;
-        margin-bottom: 1rem;
-        color: $color-darkest-purple;
+        &:hover {
+          transform: scale(1.1) !important;
+          z-index: 10;
+        }
+
+        &.city-xl {
+          font-size: 3rem;
+          color: #5B4B85;
+        }
+
+        &.city-lg {
+          font-size: 2.2rem;
+        }
+
+        &.city-md {
+          font-size: 1.6rem;
+          color: #8B7BB8;
+        }
+
+        &.city-sm {
+          font-size: 1.2rem;
+          color: #9B8BC8;
+        }
+
+        &.city-xs {
+          font-size: 0.9rem;
+          color: #AB9BD8;
+        }
       }
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto 2rem auto;
+    padding: 0 2rem 4rem 2rem;
+    background: transparent;
+    z-index: 10;
+
+    .nav-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      font-size: 1.2rem;
+      font-family: $font-nunito;
+      font-weight: 600;
+      border-radius: 2rem;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+      border: 3px solid transparent;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    .about-btn {
+      background: #c7b6e5;
+      color: #3d2670;
+      border-color: #6d4fa3;
+    }
+
+    .academics-btn {
+      background: #83B8E9;
+      color: #2d3d1a;
+      border-color: #316798;
     }
   }
 }

@@ -1,0 +1,57 @@
+@use "../../app/globals.scss" as *;
+
+.section-title {
+    font-family: $font-nunito;
+    font-weight: 700;
+    font-size: 2rem;
+    color: black;
+    margin: 0 0 0.5rem 0;
+    text-align: left;
+}
+
+.section-subtitle {
+    @include description-style;
+    font-size: 1rem;
+    color: #2f2e2e;
+    text-align: left;
+    margin-bottom: 0.25rem;
+}
+
+.respondent-count {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.charts-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    >* {
+        flex: 1 1 45%;
+        min-width: 300px;
+        max-width: 550px;
+    }
+
+    &.single-chart {
+        >* {
+            flex: 1 1 100%;
+            max-width: 800px;
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        align-items: center;
+
+        >* {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+    }
+}
