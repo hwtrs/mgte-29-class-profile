@@ -200,20 +200,47 @@ export default function DemographicsPage() {
 
           {/* Astrological Signs */}
           <h2 className="section-title">Astrological</h2>
-          <p className="section-subtitle">To those who are Scorpios, your parents got busy on Valentines Day!</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row single-chart">
-            <GenericChart
-              title="What Is Your Astrological Sign?"
-              dataUrl="/data/astrological-sign.csv"
-              chartType="ColumnChart"
-              options={{
-                legend: { position: 'none' },
-                colors: ['#F4D03F'],
-                hAxis: { title: '' },
-                vAxis: { title: '' }
-              }}
-            />
+          <p className="section-subtitle">To those who are Scorpios.. your parents got busy on Valentines Day!</p>
+          <p className="respondent-count">54 respondents</p>
+          <div className="zodiac-section">
+            <div className="zodiac-header">
+              <h3 className="chart-question">What Is Your Astrologic Sign?</h3>
+              <p className="chart-respondents">number of respondents: 54</p>
+            </div>
+            <div className="zodiac-grid">
+              {[
+                { sign: 'aries', count: 3, alt: false, img: { w: '594.71%', h: '390.28%', left: '-42.86%', top: '-51.31%' } },
+                { sign: 'taurus', count: 2, alt: true, img: { w: '709.05%', h: '390.28%', left: '-168.73%', top: '-50.69%' } },
+                { sign: 'gemini', count: 5, alt: false, img: { w: '715.92%', h: '369.74%', left: '-273.25%', top: '-43.93%' } },
+                { sign: 'cancer', count: 5, alt: true, img: { w: '607.57%', h: '369.74%', left: '-317.3%', top: '-42.57%' } },
+                { sign: 'leo', count: 4, alt: false, img: { w: '802.86%', h: '373.69%', left: '-551.43%', top: '-53.21%' } },
+                { sign: 'virgo', count: 3, alt: true, img: { w: '665.09%', h: '347.39%', left: '-538.46%', top: '-32.98%' } },
+                { sign: 'libra', count: 4, alt: true, img: { w: '545.63%', h: '347.7%', left: '-31.71%', top: '-167.91%' } },
+                { sign: 'scorpio', count: 11, alt: false, img: { w: '651.17%', h: '393.13%', left: '-156.07%', top: '-194.13%' } },
+                { sign: 'sagittarius', count: 6, alt: true, img: { w: '713.97%', h: '369.74%', left: '-278.93%', top: '-189.14%' } },
+                { sign: 'capricorn', count: 4, alt: false, img: { w: '666.14%', h: '303.76%', left: '-361.59%', top: '-136.36%' } },
+                { sign: 'aquarius', count: 3, alt: true, img: { w: '688.03%', h: '531.3%', left: '-471.11%', top: '-286.58%' } },
+                { sign: 'pisces', count: 4, alt: false, img: { w: '665.09%', h: '347.39%', left: '-552.07%', top: '-158.81%' } },
+              ].map(({ sign, count, alt, img }) => (
+                <div key={sign} className={`zodiac-card ${alt ? 'zodiac-card--alt' : ''}`}>
+                  <div className="zodiac-icon">
+                    <img
+                      src="/demographics/zodiac-sprites.png"
+                      alt={sign}
+                      style={{
+                        position: 'absolute',
+                        width: img.w,
+                        height: img.h,
+                        left: img.left,
+                        top: img.top,
+                        maxWidth: 'none',
+                      }}
+                    />
+                  </div>
+                  <span className="zodiac-label">{sign}: {count}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Relationships */}
