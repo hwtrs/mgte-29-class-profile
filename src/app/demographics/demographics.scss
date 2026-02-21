@@ -221,12 +221,6 @@
     }
   }
 
-  .chart-container {
-    border: 3px solid var(--color-border-card);
-    border-radius: 16px;
-    box-shadow: 0 4px 12px var(--color-shadow);
-  }
-
   .pie-chart-wrapper {
     position: relative;
     flex: 1 1 45%;
@@ -243,10 +237,6 @@
   }
 
   .hometown-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px var(--color-shadow);
     margin-top: 2rem;
     margin-bottom: 0;
 

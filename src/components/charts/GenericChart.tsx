@@ -10,6 +10,7 @@ export type ChartType = 'PieChart' | 'BarChart' | 'ColumnChart' | 'GeoChart' | '
 interface GenericChartProps {
   title: string;
   subtitle?: string;
+  showRespondents?: boolean;
   dataUrl: string;
   chartType: ChartType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,6 +24,7 @@ interface GenericChartProps {
 const GenericChart: React.FC<GenericChartProps> = ({
   title,
   subtitle,
+  showRespondents,
   dataUrl,
   chartType,
   options = {},
@@ -32,6 +34,7 @@ const GenericChart: React.FC<GenericChartProps> = ({
   yAxisLabel,
 }) => {
   const [data, setData] = useState<ChartDataArray>([]);
+  const [respondentCount, setRespondentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,6 +50,10 @@ const GenericChart: React.FC<GenericChartProps> = ({
           return [label.trim(), Number(countStr.trim())];
         }).filter(row => !isNaN(row[1] as number));
         setData([[lines[0].split(',')[0], lines[0].split(',')[1]], ...dataRows]);
+        if (showRespondents) {
+          const total = dataRows.reduce((sum, row) => sum + (row[1] as number), 0);
+          setRespondentCount(total);
+        }
       } catch (e) {
         setError(e instanceof Error ? e.message : String(e));
       } finally {
@@ -54,18 +61,21 @@ const GenericChart: React.FC<GenericChartProps> = ({
       }
     }
     loadData();
-  }, [dataUrl]);
+  }, [dataUrl, showRespondents]);
 
   const defaultOptions = {
     // title: title,
     backgroundColor: 'transparent',
+    pieSliceText: 'none',
+    pieSliceBorderColor: 'transparent',
+    tooltip: { isHtml: true },
     legend: { position: chartType === 'GeoChart' ? 'none' : chartType == 'PieChart' ? 'bottom' : 'right' },
     chartArea: { width: '70%', height: '70%' },
     ...(chartType === 'BarChart' || chartType === 'ColumnChart'
       ? {
-          hAxis: { title: xAxisLabel || '' },
-          vAxis: { title: yAxisLabel || '' },
-        }
+        hAxis: { title: xAxisLabel || '' },
+        vAxis: { title: yAxisLabel || '' },
+      }
       : {}),
     ...options,
   };
@@ -91,8 +101,12 @@ const GenericChart: React.FC<GenericChartProps> = ({
   return (
     <div className="chart-container">
       <h3 className="chart-title">{title}</h3>
-      {subtitle && <p className="chart-subtitle">{subtitle}</p>}
-      <div className="chart-wrapper" style={{ width, height }}>
+      {(subtitle || respondentCount !== null) && (
+        <p className="chart-subtitle">
+          {subtitle || `number of respondents: ${respondentCount}`}
+        </p>
+      )}
+      <div className={`chart-wrapper ${chartType === 'PieChart' ? 'pie-chart' : ''}`} style={{ width, height }}>
         <Chart chartType={chartType} data={data} options={defaultOptions} width={width} height={height} />
       </div>
     </div>

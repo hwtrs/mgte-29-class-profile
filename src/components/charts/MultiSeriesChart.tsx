@@ -18,7 +18,7 @@ interface GenericChart2Props {
   height?: string;
   xAxisLabel?: string;
   yAxisLabel?: string;
-  multiSeries?: boolean; 
+  multiSeries?: boolean;
 }
 
 const GenericChart2: React.FC<GenericChart2Props> = ({
@@ -31,7 +31,7 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
   height = '400px',
   xAxisLabel,
   yAxisLabel,
-  multiSeries = false, 
+  multiSeries = false,
 }) => {
   const [data, setData] = useState<ChartDataArray>([]);
   const [loading, setLoading] = useState(true);
@@ -44,7 +44,7 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
         if (!res.ok) throw new Error(`Failed to load data from ${dataUrl}`);
         const text = await res.text();
         const lines = text.trim().split('\n');
-        
+
         if (multiSeries) {
           const header = lines[0].split(',').map(col => col.trim());
           const dataRows = lines.slice(1).map(line => {
@@ -75,13 +75,16 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
 
   const defaultOptions = {
     backgroundColor: 'transparent',
+    pieSliceText: 'none',
+    pieSliceBorderColor: 'transparent',
+    tooltip: { isHtml: true },
     legend: { position: chartType === 'GeoChart' ? 'none' : chartType == 'PieChart' ? 'bottom' : 'top' },
     chartArea: { width: '70%', height: '70%' },
     ...(chartType === 'BarChart' || chartType === 'ColumnChart' || chartType === 'LineChart'
       ? {
-          hAxis: { title: xAxisLabel || '' },
-          vAxis: { title: yAxisLabel || '' },
-        }
+        hAxis: { title: xAxisLabel || '' },
+        vAxis: { title: yAxisLabel || '' },
+      }
       : {}),
     ...options,
   };
@@ -108,7 +111,7 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
     <div className="chart-container">
       <h3 className="chart-title">{title}</h3>
       {subtitle && <p className="chart-subtitle">{subtitle}</p>}
-      <div className="chart-wrapper" style={{ width, height }}>
+      <div className={`chart-wrapper ${chartType === 'PieChart' ? 'pie-chart' : ''}`} style={{ width, height }}>
         <Chart chartType={chartType} data={data} options={defaultOptions} width={width} height={height} />
       </div>
     </div>

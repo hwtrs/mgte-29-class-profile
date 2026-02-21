@@ -1,12 +1,45 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import './demographics.scss';
 import GenericChart from '../../components/charts/GenericChart';
 
+const ZODIAC_SPRITES: Record<string, { alt: boolean; img: { w: string; h: string; left: string; top: string } }> = {
+  aries:       { alt: false, img: { w: '594.71%', h: '390.28%', left: '-42.86%', top: '-51.31%' } },
+  taurus:      { alt: true,  img: { w: '709.05%', h: '390.28%', left: '-168.73%', top: '-50.69%' } },
+  gemini:      { alt: false, img: { w: '715.92%', h: '369.74%', left: '-273.25%', top: '-43.93%' } },
+  cancer:      { alt: true,  img: { w: '607.57%', h: '369.74%', left: '-317.3%', top: '-42.57%' } },
+  leo:         { alt: false, img: { w: '802.86%', h: '373.69%', left: '-551.43%', top: '-53.21%' } },
+  virgo:       { alt: true,  img: { w: '665.09%', h: '347.39%', left: '-538.46%', top: '-32.98%' } },
+  libra:       { alt: true,  img: { w: '545.63%', h: '347.7%', left: '-31.71%', top: '-167.91%' } },
+  scorpio:     { alt: false, img: { w: '651.17%', h: '393.13%', left: '-156.07%', top: '-194.13%' } },
+  sagittarius: { alt: true,  img: { w: '713.97%', h: '369.74%', left: '-278.93%', top: '-189.14%' } },
+  capricorn:   { alt: false, img: { w: '666.14%', h: '303.76%', left: '-361.59%', top: '-136.36%' } },
+  aquarius:    { alt: true,  img: { w: '688.03%', h: '531.3%', left: '-471.11%', top: '-286.58%' } },
+  pisces:      { alt: false, img: { w: '665.09%', h: '347.39%', left: '-552.07%', top: '-158.81%' } },
+};
+
+const ZODIAC_ORDER = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'];
+
 export default function DemographicsPage() {
+  const [zodiacData, setZodiacData] = useState<{ sign: string; count: number }[]>([]);
+
+  useEffect(() => {
+    fetch('/data/demographics/astrological-sign.csv')
+      .then(res => res.text())
+      .then(text => {
+        const lines = text.trim().split('\n').slice(1);
+        const counts: Record<string, number> = {};
+        lines.forEach(line => {
+          const [label, countStr] = line.split(',');
+          counts[label.trim().toLowerCase()] = Number(countStr.trim());
+        });
+        setZodiacData(ZODIAC_ORDER.map(sign => ({ sign, count: counts[sign] || 0 })));
+      });
+  }, []);
+
   return (
     <ProfileLayout>
       <div className="demographics-container">
@@ -35,7 +68,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 40.png" alt="" className="chart-highlight" style={{ bottom: '15%', right: '10%' }} />
               <GenericChart
                 title="What Do You Identify As?"
-                dataUrl="/data/gender.csv"
+                dataUrl="/data/demographics/gender.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
@@ -49,7 +82,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 34.png" alt="" className="chart-highlight" style={{ bottom: '20%', right: '15%' }} />
               <GenericChart
                 title="What Is Your Sexuality?"
-                dataUrl="/data/sexuality.csv"
+                dataUrl="/data/demographics/sexuality.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
@@ -66,7 +99,7 @@ export default function DemographicsPage() {
           <div className="charts-row">
             <GenericChart
               title="Which Ethnicities Do You Identify With?"
-              dataUrl="/data/ethnicity.csv"
+              dataUrl="/data/demographics/ethnicity.csv"
               chartType="BarChart"
               options={{
                 legend: { position: 'none' },
@@ -77,7 +110,7 @@ export default function DemographicsPage() {
             />
             <GenericChart
               title="What Religion Do You Identify With?"
-              dataUrl="/data/religion.csv"
+              dataUrl="/data/demographics/religion.csv"
               chartType="ColumnChart"
               options={{
                 legend: { position: 'none' },
@@ -95,7 +128,7 @@ export default function DemographicsPage() {
           <div className="charts-row single-chart">
             <GenericChart
               title="Where Is Your Birth Country?"
-              dataUrl="/data/birth-country.csv"
+              dataUrl="/data/demographics/birth-country.csv"
               chartType="GeoChart"
               width="100%"
               height="400px"
@@ -109,25 +142,12 @@ export default function DemographicsPage() {
           </div>
           <div className="hometown-section">
             <h3 className="chart-question">Where Is Your Hometown?</h3>
-            <div className="word-cloud">
-              <span className="city city-xl" style={{ position: 'absolute', top: '40%', left: '35%', transform: 'rotate(-5deg)' }}>Toronto</span>
-              <span className="city city-lg" style={{ position: 'absolute', top: '20%', left: '55%', transform: 'rotate(3deg)' }}>Brampton</span>
-              <span className="city city-md" style={{ position: 'absolute', top: '65%', left: '20%', transform: 'rotate(-2deg)' }}>Richmond Hill</span>
-              <span className="city city-md" style={{ position: 'absolute', top: '15%', left: '15%', transform: 'rotate(5deg)' }}>Oakville</span>
-              <span className="city city-md" style={{ position: 'absolute', top: '70%', left: '60%', transform: 'rotate(-4deg)' }}>Mississauga</span>
-              <span className="city city-md" style={{ position: 'absolute', top: '30%', left: '75%', transform: 'rotate(2deg)' }}>Calgary</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '55%', left: '5%', transform: 'rotate(-3deg)' }}>Scarborough</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '10%', left: '40%', transform: 'rotate(4deg)' }}>Waterloo</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '80%', left: '45%', transform: 'rotate(-1deg)' }}>Markham</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '45%', left: '80%', transform: 'rotate(3deg)' }}>Milton</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '25%', left: '5%', transform: 'rotate(-5deg)' }}>Burlington</span>
-              <span className="city city-sm" style={{ position: 'absolute', top: '60%', left: '85%', transform: 'rotate(2deg)' }}>Burnaby</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '5%', left: '70%', transform: 'rotate(-2deg)' }}>Ottawa</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '85%', left: '75%', transform: 'rotate(4deg)' }}>Hamilton</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '75%', left: '10%', transform: 'rotate(-4deg)' }}>Vaughan</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '35%', left: '10%', transform: 'rotate(1deg)' }}>Kitchener</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '50%', left: '65%', transform: 'rotate(-3deg)' }}>Windsor</span>
-              <span className="city city-xs" style={{ position: 'absolute', top: '90%', left: '30%', transform: 'rotate(2deg)' }}>Barrie</span>
+            <div className="word-cloud" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto', padding: '0' }}>
+              <img
+                src="/demographics/Group 40130.png"
+                alt="Hometown Word Cloud"
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px' }}
+              />
             </div>
           </div>
 
@@ -138,7 +158,7 @@ export default function DemographicsPage() {
           <div className="charts-row">
             <GenericChart
               title="How Many Languages Do You Speak?"
-              dataUrl="/data/of-languages.csv"
+              dataUrl="/data/demographics/of-languages.csv"
               chartType="ColumnChart"
               options={{
                 legend: { position: 'none' },
@@ -153,7 +173,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 33.png" alt="" className="chart-highlight" style={{ bottom: '12%', right: '3%' }} />
               <GenericChart
                 title="When Were You Born?"
-                dataUrl="/data/birth-year.csv"
+                dataUrl="/data/demographics/birth-year.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
@@ -174,7 +194,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 34.png" alt="" className="chart-highlight" style={{ bottom: '20%', right: '3%' }} />
               <GenericChart
                 title="Do Your Parents Work in the STEM Fields?"
-                dataUrl="/data/parents-in-stem.csv"
+                dataUrl="/data/demographics/parents-in-stem.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
@@ -188,7 +208,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 33.png" alt="" className="chart-highlight" style={{ bottom: '25%', right: '8%' }} />
               <GenericChart
                 title="How Many Siblings Do You Have?"
-                dataUrl="/data/of-siblings.csv"
+                dataUrl="/data/demographics/of-siblings.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
@@ -208,38 +228,28 @@ export default function DemographicsPage() {
               <p className="chart-respondents">number of respondents: 54</p>
             </div>
             <div className="zodiac-grid">
-              {[
-                { sign: 'aries', count: 3, alt: false, img: { w: '594.71%', h: '390.28%', left: '-42.86%', top: '-51.31%' } },
-                { sign: 'taurus', count: 2, alt: true, img: { w: '709.05%', h: '390.28%', left: '-168.73%', top: '-50.69%' } },
-                { sign: 'gemini', count: 5, alt: false, img: { w: '715.92%', h: '369.74%', left: '-273.25%', top: '-43.93%' } },
-                { sign: 'cancer', count: 5, alt: true, img: { w: '607.57%', h: '369.74%', left: '-317.3%', top: '-42.57%' } },
-                { sign: 'leo', count: 4, alt: false, img: { w: '802.86%', h: '373.69%', left: '-551.43%', top: '-53.21%' } },
-                { sign: 'virgo', count: 3, alt: true, img: { w: '665.09%', h: '347.39%', left: '-538.46%', top: '-32.98%' } },
-                { sign: 'libra', count: 4, alt: true, img: { w: '545.63%', h: '347.7%', left: '-31.71%', top: '-167.91%' } },
-                { sign: 'scorpio', count: 11, alt: false, img: { w: '651.17%', h: '393.13%', left: '-156.07%', top: '-194.13%' } },
-                { sign: 'sagittarius', count: 6, alt: true, img: { w: '713.97%', h: '369.74%', left: '-278.93%', top: '-189.14%' } },
-                { sign: 'capricorn', count: 4, alt: false, img: { w: '666.14%', h: '303.76%', left: '-361.59%', top: '-136.36%' } },
-                { sign: 'aquarius', count: 3, alt: true, img: { w: '688.03%', h: '531.3%', left: '-471.11%', top: '-286.58%' } },
-                { sign: 'pisces', count: 4, alt: false, img: { w: '665.09%', h: '347.39%', left: '-552.07%', top: '-158.81%' } },
-              ].map(({ sign, count, alt, img }) => (
-                <div key={sign} className={`zodiac-card ${alt ? 'zodiac-card--alt' : ''}`}>
-                  <div className="zodiac-icon">
-                    <img
-                      src="/demographics/zodiac-sprites.png"
-                      alt={sign}
-                      style={{
-                        position: 'absolute',
-                        width: img.w,
-                        height: img.h,
-                        left: img.left,
-                        top: img.top,
-                        maxWidth: 'none',
-                      }}
-                    />
+              {zodiacData.map(({ sign, count }) => {
+                const sprite = ZODIAC_SPRITES[sign];
+                return (
+                  <div key={sign} className={`zodiac-card ${sprite.alt ? 'zodiac-card--alt' : ''}`}>
+                    <div className="zodiac-icon">
+                      <img
+                        src="/demographics/zodiac-sprites.png"
+                        alt={sign}
+                        style={{
+                          position: 'absolute',
+                          width: sprite.img.w,
+                          height: sprite.img.h,
+                          left: sprite.img.left,
+                          top: sprite.img.top,
+                          maxWidth: 'none',
+                        }}
+                      />
+                    </div>
+                    <span className="zodiac-label">{sign}: {count}</span>
                   </div>
-                  <span className="zodiac-label">{sign}: {count}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -259,7 +269,7 @@ export default function DemographicsPage() {
               <img src="/demographics/Highlight 40.png" alt="" className="chart-highlight" style={{ bottom: '15%', left: '8%' }} />
               <GenericChart
                 title="Are You In A Relationship?"
-                dataUrl="/data/relationship-status.csv"
+                dataUrl="/data/demographics/relationship-status.csv"
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
