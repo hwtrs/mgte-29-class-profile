@@ -5,7 +5,7 @@
   min-height: 100vh;
   padding: 0;
   background: url("/img/dotted-bg.png") repeat;
-  background-size: contain;
+  background-size: 100% auto;
   font-family: $font-nunito;
   overflow-x: hidden;
   position: absolute;

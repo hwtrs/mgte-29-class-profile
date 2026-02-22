@@ -1,5 +1,132 @@
 @use "../globals.scss" as *;
 
 .lifestyle-container {
-    // About page styles
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  background: url("/img/dotted-bg.png") repeat;
+  background-size: 100% auto;
+  font-family: $font-nunito;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @import "../../components/layout/BannerStyles.scss";
+
+  .bg-banner {
+    width: clamp(400px, 100vw, 1800px);
+  }
+
+  .bg-title {
+    top: 35%;
+    background: url("/lifestyle/lifestyle-banner.png") no-repeat center/contain;
+  }
+}
+
+.lifestyle-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem;
+
+  @import "../../components/layout/SectionStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
+
+  .section-title:first-of-type {
+    margin-top: -6rem;
+  }
+
+  .chart-container {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+
+    &.wide {
+      flex: 1 1 100%;
+    }
+
+    h3 {
+      @include graph-question-text-style;
+      margin-bottom: 0.5rem;
+      color: $color-darkest-purple;
+    }
+  }
+
+  .section-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .img-subtitle {
+    @include graph-question-text-style;
+    font-family: $font-nunito;
+    font-weight: 700;
+    color: $color-darkest-purple;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .charts-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .craziest-experiences {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .experience-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .lifestyle-container .background {
+    height: 56vh;
+
+    .bg-banner {
+      top: 22rem;
+    }
+
+    .bg-title {
+      width: 160%;
+    }
+
+    .bg-lockers {
+      height: clamp(300px, 40vh, 800px);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .lifestyle-container .background {
+    height: 46vh;
+
+    .bg-banner {
+      top: 14rem;
+    }
+
+    .bg-title {
+      width: 200%;
+    }
+
+    .bg-lockers {
+      height: clamp(300px, 10vh, 800px);
+    }
+  }
 }
