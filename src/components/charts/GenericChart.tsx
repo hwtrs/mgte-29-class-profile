@@ -19,6 +19,7 @@ interface GenericChartProps {
   height?: string;
   xAxisLabel?: string;
   yAxisLabel?: string;
+  multiSeries?: boolean;
 }
 
 const GenericChart: React.FC<GenericChartProps> = ({
@@ -32,6 +33,7 @@ const GenericChart: React.FC<GenericChartProps> = ({
   height = '400px',
   xAxisLabel,
   yAxisLabel,
+  multiSeries = false,
 }) => {
   const [data, setData] = useState<ChartDataArray>([]);
   const [respondentCount, setRespondentCount] = useState<number | null>(null);
@@ -46,14 +48,29 @@ const GenericChart: React.FC<GenericChartProps> = ({
         if (!res.ok) throw new Error(`Failed to load data from ${dataUrl}`);
         const text = await res.text();
         const lines = text.trim().split('\n');
-        const dataRows = lines.slice(1).map(line => {
-          const [label, countStr] = line.split(',');
-          return [label.trim(), Number(countStr.trim())];
-        }).filter(row => !isNaN(row[1] as number));
-        setData([[lines[0].split(',')[0], lines[0].split(',')[1]], ...dataRows]);
-        if (showRespondents) {
-          const total = dataRows.reduce((sum, row) => sum + (row[1] as number), 0);
-          setRespondentCount(total);
+
+        if (multiSeries) {
+          const header = lines[0].split(',').map(col => col.trim());
+          const dataRows = lines.slice(1).map(line => {
+            const values = line.split(',');
+            return [
+              values[0].trim(),
+              ...values.slice(1).map(val => Number(val.trim()))
+            ];
+          }).filter(row => {
+            return row.slice(1).every(val => !isNaN(val as number));
+          });
+          setData([header, ...dataRows]);
+        } else {
+          const dataRows = lines.slice(1).map(line => {
+            const [label, countStr] = line.split(',');
+            return [label.trim(), Number(countStr.trim())];
+          }).filter(row => !isNaN(row[1] as number));
+          setData([[lines[0].split(',')[0], lines[0].split(',')[1]], ...dataRows]);
+          if (showRespondents) {
+            const total = dataRows.reduce((sum, row) => sum + (row[1] as number), 0);
+            setRespondentCount(total);
+          }
         }
       } catch (e) {
         setError(e instanceof Error ? e.message : String(e));
@@ -62,7 +79,7 @@ const GenericChart: React.FC<GenericChartProps> = ({
       }
     }
     loadData();
-  }, [dataUrl, showRespondents]);
+  }, [dataUrl, showRespondents, multiSeries]);
 
   // After the pie chart renders, inject an SVG <circle> at the exact pie boundary
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

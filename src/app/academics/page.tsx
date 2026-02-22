@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import "./academics.scss"
-import GenericChart2 from '../../components/charts/MultiSeriesChart';
 import GenericChart from '../../components/charts/GenericChart';
 
 export default function AcademicsPage() {
@@ -20,7 +19,7 @@ export default function AcademicsPage() {
           {/* Grades */}
           <h2 className="section-title">University Grades</h2>
           <p className="section-subtitle">Academic victims? Academic weapons? Why not both?</p>
-          <GenericChart2
+          <GenericChart
             title="What was your Fall vs Winter grade average?"
             subtitle="number of respondents: 38"
             dataUrl="/data/academics/averages.csv"
@@ -91,7 +90,7 @@ export default function AcademicsPage() {
           {/* Most and least useful courses */}
           <h2 className="section-title">Most and Least Useful Courses</h2>
           <p className="section-subtitle">Turns out, some courses weren&apos;t just academic trauma</p>
-          <GenericChart2
+          <GenericChart
             title="Least vs. Most Useful Courses"
             subtitle="number of respondents: 42"
             dataUrl="/data/academics/useful-courses.csv"
@@ -121,7 +120,7 @@ export default function AcademicsPage() {
           {/* Most interesting and boring courses */}
           <h2 className="section-title">Most Interesting and Most Boring Courses</h2>
           <p className="section-subtitle">Catching up on sleep &gt; Going to MSE 131 at 9:00 AM</p>
-          <GenericChart2
+          <GenericChart
             title="Most Boring vs. Most Interesting Courses"
             subtitle="number of respondents: 42"
             dataUrl="/data/academics/boring-courses.csv"
@@ -330,7 +329,7 @@ export default function AcademicsPage() {
           {/* Habits vs academics */}
           <h2 className="section-title">Habits vs. Academic Performance</h2>
           <p className="section-subtitle">Turns out more sleep equals higher grades!</p>
-          <GenericChart2
+          <GenericChart
             title="How do our daily habits relate to our grades?"
             subtitle="number of respondents: 15"
             dataUrl='/data/academics/habits.csv'

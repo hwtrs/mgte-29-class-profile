@@ -61,7 +61,7 @@ export default function CoopPage() {
               yAxisLabel='Number of People'
               options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -135,7 +135,7 @@ export default function CoopPage() {
               yAxisLabel='Number of People'
               options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -155,7 +155,7 @@ export default function CoopPage() {
               yAxisLabel='Number of People'
               options={{
                 legend: { position: 'none' },
-                colors: ['#FCF3CF'],
+                colors: ['#F4D03F'],
               }}
             />
           </div>
@@ -195,7 +195,7 @@ export default function CoopPage() {
               yAxisLabel='Number of People'
               options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -215,7 +215,7 @@ export default function CoopPage() {
               yAxisLabel='Number of People'
               options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>

@@ -20,23 +20,15 @@
   }
 }
 
+@import "../../components/layout/SectionStyles.scss";
+
 .awards-section {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.section-title {
+.section-title:first-of-type {
     margin-top: -6rem;
-    font-size: 2rem;
-    color: black;
-    margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-    @include description-style;
-    font-size: 1.2rem;
-    color: var(--color-text-primary);
-    margin-bottom: 0.5rem;
 }
 
 .superlatives {

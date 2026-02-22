@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import GenericChart from '../../components/charts/GenericChart';
-import MultiSeriesChart from '../../components/charts/MultiSeriesChart';
 import SongCard from '../../components/cards/SongCard';
 import './lifestyle.scss';
 
@@ -25,7 +24,7 @@ export default function LifestylePage() {
           <p className="section-subtitle">This year took a toll on our stress... hopefully 2A will be better!</p>
           <p className="respondent-count">38 respondents</p>
           <div className="charts-row single-chart">
-            <MultiSeriesChart
+            <GenericChart
               title="What were your stress levels in 1A vs. 1B?"
               subtitle="number of respondents: 38"
               dataUrl="/data/lifestyle/stress-combined.csv"
@@ -275,7 +274,7 @@ export default function LifestylePage() {
           <p className="section-subtitle">Destroying those engineering stereotypes one score at a time!</p>
           <p className="respondent-count">27 respondents</p>
           <div className="charts-row single-chart">
-            <MultiSeriesChart
+            <GenericChart
               title="What were your Rice Purity Score 1A vs. 1B"
               subtitle="number of respondents: 27"
               dataUrl="/data/lifestyle/rice-purity-combined.csv"

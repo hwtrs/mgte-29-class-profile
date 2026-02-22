@@ -92,7 +92,7 @@ export default function AboutPage() {
             future selves can look back and see just how far we have come.
           </p>
           <p className="section-text">
-            All of this came together thanks to a dedicated team of 11 individuals who worked tirelessly to bring
+            All of this came together thanks to a dedicated team of 12 individuals who worked tirelessly to bring
             this project to life, from brainstorming and design to data collection, development, and everything
             in between. This is more than just a website. It is our story and we are excited to share it with you!
           </p>
