@@ -1,0 +1,30 @@
+@use "../../app/globals.scss" as *;
+
+.team-member {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 2;
+
+  &:hover {
+    transform: rotate(var(--hover-rotation)) scale(1.05);
+    filter: brightness(1.1);
+    z-index: 4;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--no-link {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
