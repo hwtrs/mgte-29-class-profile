@@ -8,7 +8,7 @@ interface ProfileLayoutProps {
 export default function ProfileLayout({ children }: ProfileLayoutProps) {
   return (
     <div className="profile-layout">
-      <body>{children}</body>
+      <main>{children}</main>
     </div>
   );
 }

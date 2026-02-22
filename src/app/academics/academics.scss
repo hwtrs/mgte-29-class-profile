@@ -1,139 +1,60 @@
 @use "../globals.scss" as *;
 
 .academics-container {
-  width: 100vw;
+  --pie-border-color: #1E4D78;
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   background: url("/img/dotted-bg.png") repeat;
-  background-size: contain;
+  background-size: 100% auto;
   font-family: $font-nunito;
   overflow-x: hidden;
-  position: absolute; 
-  top: 0; 
+  position: absolute;
+  top: 0;
   left: 0;
 
-    .background {
-        position: relative;
-        width: 100%;
-        height: 100vh; 
-        overflow: hidden;
-    }
-        
-    .bg-banner {
-      position: absolute;
-      top: clamp(14rem, 46vh, 36rem);
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("/img/banner-bg-sm.png") no-repeat center top;
-      background-size: contain;
-      z-index: 3;
-    }
-    
-    .bg-lockers {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      // height: 75%;
-      height: clamp(300px, 70vh, 800px);
-      background: url("/img/banner-top.jpg") no-repeat center top;
-      background-size: cover;
-      z-index: 2;
-    }
+  @import "../../components/layout/BannerStyles.scss";
 
-    .bg-title {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 32%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1600 / 600;
-      background: url("/academics/academics-banner.png") no-repeat center/contain;
-      z-index: 3;
-    }
+  .bg-title {
+    background: url("/academics/academics-banner.png") no-repeat center/contain;
+  }
 }
 
+@import "../../components/layout/SectionStyles.scss";
+@import "../../components/layout/NavButtons.scss";
+
 .academics-section {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  > .chart-container {
+    margin-bottom: 2rem;
+  }
 }
 
 .section-title {
-    margin-top: -6rem; 
-    font-size: 2rem;
-    color: black;
-    margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-    @include description-style;
-    font-size: 1.2rem;
-    color: #2f2e2e;
-    margin-bottom: 0.5rem;
-}
-
-.charts-row {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-
-  > * {                 
-    flex: 1 1 45%;       
-    min-width: 300px;     
+  &:first-of-type {
+    margin-top: -6rem;
   }
 }
 
 .academics-imgs {
-  display: block;            
-  margin: 1rem auto 0;       
-  max-width: 100%;           
-  height: auto;   
+  display: block;
+  margin: 1rem auto 0;
+  max-width: 100%;
+  height: auto;
 }
 
 .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 4rem auto 2rem auto;
-    padding: 0 2rem 4rem 2rem;
-    bottom: 0;
-    background: transparent;
-    z-index: 10;
-
-    .nav-btn {
-      color: white !important;
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 2rem;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-      border: 3px solid transparent;
-      text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-    }
-
-    .about-btn {
-      background: #c7b6e5;
-      color: #3d2670;
-      border-color: #6d4fa3;
-      box-shadow: 2px 2px 6px #6d4fa340;
-    }
-
-    .gallery-btn {
-      background: #F9E8AA;
-      color: #2d3d1a;
-      border-color: #E9CB6D;
-      box-shadow: 2px 2px 6px #5a7d4a40;
-    }
-
-    .nav-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.18);
-    }
+  .about-btn {
+    background: var(--color-purple-light);
+    color: #3d2670;
+    border-color: #6d4fa3;
   }
+
+  .gallery-btn {
+    background: var(--color-yellow-light);
+    color: #2d3d1a;
+    border-color: #E9CB6D;
+  }
+}

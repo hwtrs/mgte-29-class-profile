@@ -1,60 +1,24 @@
 @use "../globals.scss" as *;
 
 .about-container {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   background: url("/img/dotted-bg.png") repeat;
-  background-size: contain;
+  background-size: 100% auto;
   font-family: $font-nunito;
   overflow-x: hidden;
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-}
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  .background {
-    position: relative;
-    width: 100%;
-    height: 100vh; 
-    overflow: hidden;
+  @import "../../components/layout/BannerStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
+
+  .bg-title {
+    background: url("/about/about-banner.png") no-repeat center/contain;
   }
-    
-    .bg-banner {
-      position: absolute;
-      top: clamp(14rem, 46vh, 36rem);
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("/img/banner-bg-sm.png") no-repeat center top;
-      background-size: contain;
-      z-index: 3;
-    }
-    
-    .bg-lockers {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      // height: 75%;
-      height: clamp(300px, 70vh, 800px);
-      background: url("/img/banner-top.jpg") no-repeat center top;
-      background-size: cover;
-      z-index: 2;
-    }
-
-    .bg-title {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 32%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1600 / 600;
-      background: url("/about/about-banner.png") no-repeat center/contain;
-      z-index: 3;
-    }
+}
 
 .about-section {
     max-width: 1200px;
@@ -62,7 +26,7 @@
 }
 
 .section-title {
-    margin-top: -6rem; 
+    margin-top: -6rem;
     font-size: 2rem;
     color: black;
     margin-bottom: 0.5rem;
@@ -71,7 +35,7 @@
 .section-subtitle {
     @include description-style;
     font-size: 1.2rem;
-    color: #2f2e2e;
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
 }
 
@@ -87,7 +51,7 @@
 
 .section-text {
     font-size: 1rem;
-    color: #2f2e2e;
+    color: var(--color-text-primary);
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
@@ -95,7 +59,7 @@
 .whats-mgte {
   content: '';
   display: block;
-  margin-top: -6rem; 
+  margin-top: -6rem;
   margin-bottom: -8rem;
   width: 100%;
   height: auto;
@@ -106,8 +70,8 @@
 .post-1b-final {
   content: '';
   display: block;
-  margin-top: -3rem; 
-  margin-bottom: 3rem; 
+  margin-top: -3rem;
+  margin-bottom: 3rem;
   width: 100%;
   height: auto;
   aspect-ratio: 1600 / 600;
@@ -115,54 +79,52 @@
 }
 
 .section-title-2 {
-    margin-top: 4rem; 
-    margin-bottom: 2rem; 
+    margin-top: 4rem;
+    margin-bottom: 2rem;
     font-size: 2rem;
     color: black;
 }
 
-.the-team {
+.bulletin-board {
+  position: relative;
   display: block;
   margin: 2rem auto 1rem auto;
   width: 75%;
   max-width: 100%;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    width: 90%;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 98%;
+  }
+}
+
+.bulletin-bg {
+  display: block;
+  width: 100%;
   height: auto;
+  position: relative;
+  z-index: 0;
+}
+
+.bulletin-overlay {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
 }
 
 .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 4rem auto 2rem auto;
-    padding: 0 2rem 4rem 2rem;
-    bottom: 0;
-    background: transparent;
-    z-index: 10;
-
-    .nav-btn {
-      color: white !important;
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 2rem;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-      border: 3px solid transparent;
-      text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-    }
-
     .awards-btn {
       background: #FFE7A1;
       color: #3d2670;
       border-color: #F3C959;
-      box-shadow: 2px 2px 6px #6d4fa340;
-    }
-
-    .nav-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.18);
     }
   }

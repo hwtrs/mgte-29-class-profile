@@ -1,7 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import "./academics.scss"
-import GenericChart2 from '../../components/charts/MultiSeriesChart';
 import GenericChart from '../../components/charts/GenericChart';
 
 export default function AcademicsPage() {
@@ -19,7 +19,7 @@ export default function AcademicsPage() {
           {/* Grades */}
           <h2 className="section-title">University Grades</h2>
           <p className="section-subtitle">Academic victims? Academic weapons? Why not both?</p>
-          <GenericChart2
+          <GenericChart
             title="What was your Fall vs Winter grade average?"
             subtitle="number of respondents: 38"
             dataUrl="/data/academics/averages.csv"
@@ -88,9 +88,9 @@ export default function AcademicsPage() {
           />
 
           {/* Most and least useful courses */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Most and Least Useful Courses</h2>
-          <p className="section-subtitle">Turns out, some courses weren't just academic trauma</p>
-          <GenericChart2
+          <h2 className="section-title">Most and Least Useful Courses</h2>
+          <p className="section-subtitle">Turns out, some courses weren&apos;t just academic trauma</p>
+          <GenericChart
             title="Least vs. Most Useful Courses"
             subtitle="number of respondents: 42"
             dataUrl="/data/academics/useful-courses.csv"
@@ -118,9 +118,9 @@ export default function AcademicsPage() {
           />
 
           {/* Most interesting and boring courses */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Most Interesting and Most Boring Courses</h2>
+          <h2 className="section-title">Most Interesting and Most Boring Courses</h2>
           <p className="section-subtitle">Catching up on sleep &gt; Going to MSE 131 at 9:00 AM</p>
-          <GenericChart2
+          <GenericChart
             title="Most Boring vs. Most Interesting Courses"
             subtitle="number of respondents: 42"
             dataUrl="/data/academics/boring-courses.csv"
@@ -148,7 +148,7 @@ export default function AcademicsPage() {
           />
 
           {/* mgte's favs */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>MGTE's Favourites</h2>
+          <h2 className="section-title">MGTE&apos;s Favourites</h2>
           <p className="section-subtitle">The things that made our days in the dungeons of RCH a bit more bearable &lt;3 </p>
           <div className="charts-row">
             <GenericChart
@@ -166,27 +166,29 @@ export default function AcademicsPage() {
               title="Favourite Room in RCH?"
               dataUrl="/data/academics/fav-room.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
           </div>
 
           {/* Aftermath of physics */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Aftermath of Physics</h2>
+          <h2 className="section-title">Aftermath of Physics</h2>
           <p className="section-subtitle">The exam that made us question everything, but our Physics prof ended up coming in clutch.</p>
           <GenericChart
             title="How much did your PHYS 115 Final Exam Mark increase after scale (%)"
             subtitle="number of respondents: 38"
             dataUrl='/data/academics/physics.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#D2E6FD', '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
             }}
           />
 
           {/* Preferred tech */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>MGTE's Preferred Tech</h2>
+          <h2 className="section-title">MGTE&apos;s Preferred Tech</h2>
           <p className="section-subtitle">Call us the Lorax cause MGTE is saving the trees.</p>
           <div className="charts-row">
             <GenericChart
@@ -194,8 +196,9 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 44"
               dataUrl="/data/academics/ipad-vs-paper.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
             <GenericChart
@@ -203,14 +206,15 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 44"
               dataUrl="/data/academics/os.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
           </div>
 
           {/* Attendance */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Attendance Rates</h2>
+          <h2 className="section-title">Attendance Rates</h2>
           <p className="section-subtitle">No iClicker? Say less.</p>
           <div className="charts-row">
             <GenericChart
@@ -240,8 +244,8 @@ export default function AcademicsPage() {
           </div>
 
           {/* Studiousness  of MGTE */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>How Studious is MGTE '29</h2>
-          <p className="section-subtitle">Late nights, what's' the price?</p>
+          <h2 className="section-title">How Studious is MGTE &apos;29</h2>
+          <p className="section-subtitle">Late nights, what&apos;s the price?</p>
           <div className="charts-row">
             <GenericChart
               title="On average, how many hours did you study per day?"
@@ -260,41 +264,44 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 42"
               dataUrl="/data/academics/all-nighters.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: [ '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
               }}
             />
           </div>
 
           {/* Extracurriculars */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Extracurriculars</h2>
+          <h2 className="section-title">Extracurriculars</h2>
           <p className="section-subtitle">Shoutout Industry 4.0 Design Team ⚙️📢‼️</p>
           <GenericChart
             title="How many extracurriculars are you in?"
             subtitle="number of respondents: 41"
             dataUrl='/data/academics/extracurriculars.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#D2E6FD', '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
             }}
           />
 
           {/* Higher education */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Pursuing Higher Education</h2>
-          <p className="section-subtitle">Because five years just wasn't enough.</p>
+          <h2 className="section-title">Pursuing Higher Education</h2>
+          <p className="section-subtitle">Because five years just wasn&apos;t enough.</p>
           <GenericChart
             title="Are you interested in doing a Masters or pursuing higher education?"
             subtitle="number of respondents: 43"
             dataUrl='/data/academics/higher-edu.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#132D47', '#4D81B1', '#9DCAF3'],
+
             }}
           />
 
           {/* Fake eng */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Least "Engineering" Eng Program</h2>
-          <p className="section-subtitle">Let's refute the allegations...which eng is the FAKEST?</p>
+          <h2 className="section-title">Least &quot;Engineering&quot; Eng Program</h2>
+          <p className="section-subtitle">Let&apos;s refute the allegations...which eng is the FAKEST?</p>
           <GenericChart
             title="What's the fakest engineering program?"
             subtitle="number of respondents: 40"
@@ -309,20 +316,20 @@ export default function AcademicsPage() {
           />
 
           {/* Prof quotes */}
-          <h2 className="section-title" style={{ paddingTop: '5rem' }}>Best Professor Quotes</h2>
+          <h2 className="section-title">Best Professor Quotes</h2>
           <p className="section-subtitle">Zero Context</p>
           <img src="/academics/prof-quotes.png" alt="Prof Quotes" className="academics-imgs"/>
 
           {/* Rating classes */}
-          <h2 className="section-title" style={{ paddingTop: '8rem' }}>Rating Our Classes</h2>
-          <p className="section-subtitle">The radar charts represent a course's rating with 1 - Terrible,  5 - Awesome where 1A - Purple, 1B - Blue.</p>
+          <h2 className="section-title">Rating Our Classes</h2>
+          <p className="section-subtitle">The radar charts represent a course&apos;s rating with 1 - Terrible,  5 - Awesome where 1A - Purple, 1B - Blue.</p>
           <img src="/academics/1a.png" alt="1A Classes" className="academics-imgs"/>
           <img src="/academics/1b.png" alt="1B Classes" className="academics-imgs"/>
 
           {/* Habits vs academics */}
-          <h2 className="section-title" style={{ paddingTop: '8rem' }}>Habits vs. Academic Performance</h2>
+          <h2 className="section-title">Habits vs. Academic Performance</h2>
           <p className="section-subtitle">Turns out more sleep equals higher grades!</p>
-          <GenericChart2
+          <GenericChart
             title="How do our daily habits relate to our grades?"
             subtitle="number of respondents: 15"
             dataUrl='/data/academics/habits.csv'
@@ -339,12 +346,12 @@ export default function AcademicsPage() {
 
         {/* Buttons */}
         <div className="nav-buttons">
-          <a href="/demographics" className="nav-btn gallery-btn">
+          <Link href="/demographics" className="nav-btn nav-btn--yellow">
             &larr; Demographics
-          </a>
-          <a href="/lifestyle" className="nav-btn about-btn">
+          </Link>
+          <Link href="/lifestyle" className="nav-btn nav-btn--purple">
             Lifestyle &rarr;
-          </a>
+          </Link>
         </div>
 
       </div>

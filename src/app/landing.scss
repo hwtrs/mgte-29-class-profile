@@ -3,7 +3,8 @@
 .landing-container {
   position: relative;
   width: 100%;
-  height: calc(100% - 52px);
+  height: 100vh;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +12,13 @@
   overflow: hidden;
 
   background-image: url("/landing/lockers_lg.jpg");
-  background-size: 100% 100%;
-  background-repeat: repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 
   .book-container {
     position: relative;
-    width: 100vw;
+    width: 100%;
     max-width: 1165px;
 
     @media (min-width: $breakpoint-xl) {
@@ -30,7 +31,7 @@
     align-items: center;
     z-index: 10;
 
-    > img:first-child {
+    >img:first-child {
       position: relative;
       width: 100%;
       height: auto;
@@ -39,7 +40,7 @@
       transition: top 0.3s, left 0.3s;
     }
 
-    > img:nth-child(2) {
+    >img:nth-child(2) {
       position: absolute;
       bottom: -20%;
       right: -30%;
@@ -49,7 +50,8 @@
       z-index: 2;
       pointer-events: none;
     }
-    > img:nth-child(3) {
+
+    >img:nth-child(3) {
       position: absolute;
       bottom: -8%;
       right: -3%;
@@ -73,11 +75,11 @@
       position: absolute;
       transition: transform 0.2s ease, filter 0.2s ease;
       cursor: pointer;
-      
+
       &:active {
         transform: scale(0.95);
       }
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -97,7 +99,7 @@
         transform: rotate(6deg) scale(1.05);
       }
     }
-    
+
     .manchester-sticker {
       top: 17.5%;
       left: 31.5%;
@@ -109,7 +111,7 @@
         transform: rotate(5deg) scale(1.05);
       }
     }
-      
+
     .demographics-sticker {
       top: 70%;
       left: 11.6%;
@@ -210,16 +212,18 @@
   // Combined media queries
   @media (max-width: $breakpoint-md) {
     background-image: url("/landing/lockers_md.jpg");
-    height: calc(100% - 82px);
+    height: 100vh;
+    margin-top: 0;
 
     .book-container {
-      > img:first-child {
+      >img:first-child {
         scale: 1.68;
         top: -2.5%;
-        left: 35.5%;
+        left: 0;
       }
-      > img:nth-child(2),
-      > img:nth-child(3) {
+
+      >img:nth-child(2),
+      >img:nth-child(3) {
         visibility: hidden;
       }
     }
@@ -231,30 +235,30 @@
 
       .about-sticker {
         top: -17%;
-        left: 23.5%;
+        left: -12%;
         width: 27.2%;
         height: auto;
         z-index: 11;
       }
-    
+
       .manchester-sticker {
         top: -7.3%;
-        left: 54.5%;
+        left: 19%;
         width: 23%;
         height: auto;
         z-index: 11;
       }
-        
+
       .demographics-sticker {
         top: 81.5%;
-        left: 21.5%;
+        left: -14%;
         width: 60%;
         height: auto;
         z-index: 11;
       }
 
-      .gallery-sticker, 
-      .co-op-sticker, 
+      .gallery-sticker,
+      .co-op-sticker,
       .academics-sticker,
       .mgte-sticker,
       .pre-mgte-sticker,
@@ -267,36 +271,37 @@
 
   @media (max-width: $breakpoint-sm) {
     background-image: url("/landing/lockers_sm.jpg");
-    height: calc(100% - 62px);
+    height: 100vh;
+    margin-top: 0;
 
     .book-container {
-      > img:first-child {
+      >img:first-child {
         scale: 1.82;
         top: -7.5%;
-        left: 43%;
+        left: 0;
       }
     }
 
     .stickers {
       .about-sticker {
         top: -27.5%;
-        left: 25%;
+        left: -18%;
         width: 29%;
         height: auto;
         z-index: 11;
       }
-    
+
       .manchester-sticker {
         top: -16.5%;
-        left: 59.5%;
+        left: 16.5%;
         width: 25%;
         height: auto;
         z-index: 11;
       }
-        
+
       .demographics-sticker {
         top: 80%;
-        left: 23.4%;
+        left: -19.6%;
         width: 65.5%;
         height: auto;
         z-index: 11;

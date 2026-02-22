@@ -1,70 +1,385 @@
 @use "../globals.scss" as *;
 
 .demographics-container {
+  --pie-border-color: #C9971C;
   width: 100%;
-  padding: 2rem;
-  background-color: #EFE7E0;
+  min-height: 100vh;
+  padding: 0;
+  background: url("/img/dotted-bg.png") repeat;
+  background-size: 100% auto;
+  font-family: $font-nunito;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  // Reset old layout styles
-  // ...existing code...
-  // Remove .demographics-content, .demographics-header, .charts-layout, placeholders
+  @import "../../components/layout/BannerStyles.scss";
 
-  .demographics-chart-section {
-    max-width: 1200px;
-    margin: 4rem auto;
+  .bg-banner {
+    background: url("/img/banner-bg.png") no-repeat center top;
+    background-size: cover;
+  }
 
-    .section-title {
-      @include section-title-style;
-      font-size: 2.5rem;
-      color: $color-darkest-purple;
-      margin-bottom: 0.5rem;
+  .title-decor {
+    position: absolute;
+
+    &.decor-globe {
+      left: -60px;
+      top: 261px;
+      width: 190px;
+      height: 190px;
+      transform: rotate(-8.59deg);
+      z-index: 5;
     }
 
-    .section-subtitle {
-      @include description-style;
-      font-size: 1.2rem;
-      color: #5a5a5a;
-      margin-bottom: 0.5rem;
+    &.decor-star-18 {
+      left: 120px;
+      top: 320px;
+      width: 75px;
+      height: 75px;
+      transform: rotate(210deg);
+      z-index: 5;
     }
 
-    .respondent-count {
-      font-size: 0.9rem;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 2rem;
-      text-align: center;
+    &.decor-star-19 {
+      left: -15px;
+      top: 170px;
+      width: 100px;
+      height: 100px;
+      transform: rotate(30deg);
+      z-index: 5;
     }
 
-    .charts-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
+    &.decor-group {
+      right: 20px;
+      top: 174px;
+      width: 184px;
+      height: auto;
+      transform: rotate(17deg);
+      z-index: 3;
+    }
 
-      &.single-row,
-      &.astro-row {
-        justify-content: center;
+    &.decor-star-8 {
+      right: -30px;
+      top: 296px;
+      width: 94px;
+      height: 94px;
+      transform: rotate(32deg);
+      z-index: 5;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      &.decor-globe {
+        width: 120px;
+        height: 120px;
+        left: -40px;
+        top: 200px;
+      }
+
+      &.decor-star-18 {
+        width: 50px;
+        height: 50px;
+        left: 80px;
+        top: 260px;
+      }
+
+      &.decor-star-19 {
+        width: 40px;
+        height: 40px;
+        left: 130px;
+        top: 200px;
+      }
+
+      &.decor-group {
+        width: 120px;
+        right: 50px;
+        left: auto;
+        top: 140px;
+      }
+
+      &.decor-star-8 {
+        width: 60px;
+        height: 60px;
+        right: -20px;
+        left: auto;
+        top: 230px;
       }
     }
 
-    .chart-container {
-      background: white;
-      border-radius: 12px;
+    @media (max-width: $breakpoint-sm) {
+
+      &.decor-globe,
+      &.decor-star-18,
+      &.decor-star-19,
+      &.decor-group,
+      &.decor-star-8 {
+        display: none;
+      }
+    }
+  }
+
+  .bg-title {
+    content: '';
+    position: absolute;
+    left: 95px;
+    top: 118px;
+    width: 1293px;
+    height: 342px;
+    background: url("/demographics/title.png") no-repeat center/contain;
+    z-index: 4;
+
+    @media (max-width: $breakpoint-xl) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1293px;
+      height: auto;
+      aspect-ratio: 1293 / 342;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      top: 150px;
+      width: 85%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      top: 120px;
+      width: 90%;
+    }
+  }
+}
+
+.demographics-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem;
+
+  @import "../../components/layout/SectionStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
+
+  .section-title {
+    font-family: $font-nunito;
+  }
+
+  .section-title:first-of-type {
+    margin-top: -6rem;
+  }
+
+  .relationship-row {
+    position: relative;
+    justify-content: center !important;
+    align-items: center;
+
+
+  }
+
+  .hearts-container {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 160px;
+    flex: none !important;
+    min-width: unset !important;
+    max-width: unset !important;
+
+    .heart {
+      position: absolute;
+
+      &.heart-1 {
+        width: 90px;
+        height: auto;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-60%) rotate(-15deg);
+        z-index: 3;
+      }
+
+      &.heart-2 {
+        width: 55px;
+        height: auto;
+        left: 75px;
+        top: 50%;
+        transform: translateY(-25%) rotate(10deg);
+        z-index: 2;
+      }
+
+      &.heart-3 {
+        width: 40px;
+        height: auto;
+        left: 45px;
+        top: 50%;
+        transform: translateY(15%) rotate(-8deg);
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  .pie-chart-wrapper {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 550px;
+
+    .chart-highlight {
+      position: absolute;
+      z-index: 10;
+      width: 30px;
+      height: auto;
+      pointer-events: none;
+    }
+  }
+
+  .hometown-section {
+    margin-top: 2rem;
+    margin-bottom: 0;
+
+    .chart-question {
+      font-family: $font-nunito;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: left;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .word-cloud {
+      position: relative;
+      width: 100%;
+      height: 300px;
       padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      min-width: 300px;
+
+      .city {
+        font-family: $font-nunito;
+        font-weight: 700;
+        color: #6B5B95;
+        transition: all 0.2s ease;
+        cursor: default;
+
+        &:hover {
+          transform: scale(1.1) !important;
+          z-index: 10;
+        }
+
+        &.city-xl {
+          font-size: 3rem;
+          color: #5B4B85;
+        }
+
+        &.city-lg {
+          font-size: 2.2rem;
+        }
+
+        &.city-md {
+          font-size: 1.6rem;
+          color: #8B7BB8;
+        }
+
+        &.city-sm {
+          font-size: 1.2rem;
+          color: #9B8BC8;
+        }
+
+        &.city-xs {
+          font-size: 0.9rem;
+          color: #AB9BD8;
+        }
+      }
+    }
+  }
+
+  .zodiac-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    .zodiac-header {
       text-align: center;
+      margin-bottom: 1.5rem;
 
-      &.wide {
-        flex: 1 1 100%;
+      .chart-question {
+        font-family: $font-nunito;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #000;
+        margin-bottom: 0.25rem;
       }
 
-      h3 {
-        @include graph-question-text-style;
-        margin-bottom: 1rem;
-        color: $color-darkest-purple;
+      .chart-respondents {
+        font-family: $font-nunito;
+        font-style: italic;
+        font-size: 1.125rem;
+        color: #535047;
       }
+    }
+
+    .zodiac-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .zodiac-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(247, 184, 15, 0.6);
+      border: 3.78px solid #d59b00;
+      border-radius: 34px;
+      padding: 1rem 0.5rem;
+      box-shadow: 4px 6px 15.6px 0px rgba(0, 0, 0, 0.15);
+
+      &--alt {
+        background: #ffeda9;
+        border-color: #f0b30e;
+      }
+
+      .zodiac-icon {
+        position: relative;
+        width: 80%;
+        aspect-ratio: 1;
+        max-width: 130px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .zodiac-label {
+        font-family: $font-nunito;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #7a5600;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  .nav-buttons {
+    .about-btn {
+      background: var(--color-purple-light);
+      color: #3d2670;
+      border-color: #6d4fa3;
+    }
+
+    .academics-btn {
+      background: var(--color-blue-primary);
+      color: #2d3d1a;
+      border-color: #316798;
     }
   }
 }

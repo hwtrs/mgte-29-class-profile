@@ -1,180 +1,120 @@
 @use "../globals.scss" as *;
 
 .premgte-container {
+  --pie-border-color: #4CAF50;
   width: 100%;
-  padding: 2rem;
-  background-color: #EFE7E0;
+  min-height: 100vh;
+  padding: 0;
+  background: url("/img/dotted-bg.png") repeat;
+  background-size: 100% auto;
+  font-family: $font-nunito;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  .premgte-chart-section {
-    max-width: 1200px;
-    margin: 4rem auto;
+  @import "../../components/layout/BannerStyles.scss";
 
-    .section-title {
-      @include section-title-style;
-      font-size: 2.5rem;
+  .bg-banner {
+    width: clamp(400px, 100vw, 1800px);
+  }
+
+  .bg-title {
+    top: 35%;
+    background: url("/pre-mgte/Group 40129.png") no-repeat center/contain;
+  }
+}
+
+.premgte-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem;
+
+  @import "../../components/layout/SectionStyles.scss";
+  @import "../../components/layout/NavButtons.scss";
+
+  // Match demographics: first section pulls up into banner
+  .section-title:first-of-type {
+    margin-top: -6rem;
+  }
+
+  // Since pre-mgte has no .respondent-count elements,
+  // subtitle needs extra bottom margin to compensate.
+  // Demographics: subtitle(0.25rem) + respondent-count(~1rem + 1.5rem mb) ≈ 2.75rem
+  .section-subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+
+  .chart-container {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+
+    &.wide {
+      flex: 1 1 100%;
+    }
+
+    h3 {
+      @include graph-question-text-style;
+      margin-bottom: 0.5rem;
       color: $color-darkest-purple;
-      margin-bottom: 0.5rem;
     }
+  }
 
-    .section-subtitle {
-      @include description-style;
-      font-size: 1.2rem;
-      color: #5a5a5a;
-      margin-bottom: 0.5rem;
-    }
-
-    .respondent-count {
-      font-size: 0.9rem;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .charts-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
-
-      &.single-row {
-        justify-content: center;
-      }
-    }
-
-    .chart-container {
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      min-width: 300px;
-      text-align: center;
-
-      &.wide {
-        flex: 1 1 100%;
-      }
-
-      h3 {
-        @include graph-question-text-style;
-        margin-bottom: 1rem;
-        color: $color-darkest-purple;
-      }
-    }
+  // Word cloud image constraint
+  .word-cloud-img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
   }
 
   @media (max-width: $breakpoint-md) {
-    padding: 1rem;
-
-    .premgte-chart-section {
-      margin: 2rem auto;
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .section-subtitle {
-        font-size: 1rem;
-      }
-
-      .charts-row {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    .charts-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
     }
   }
+}
 
-  // Word cloud styling
-  .dream-jobs-wordcloud {
-    background: white;
-    border-radius: 12px;
-    padding: 3rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+@media (max-width: $breakpoint-md) {
+  .premgte-container .background {
+    height: 56vh;
 
-  .wordcloud-container {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    .word-large {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #2E7D32;
-      background: linear-gradient(135deg, #A5D6A7, #4CAF50);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .bg-banner {
+      top: 22rem;
     }
 
-    .word-medium {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #388E3C;
+    .bg-title {
+      width: 160%;
     }
 
-    .word-small {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #4CAF50;
+    .bg-lockers {
+      height: clamp(300px, 40vh, 800px);
     }
   }
+}
 
-  // Advice cards styling
-  .advice-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+@media (max-width: $breakpoint-sm) {
+  .premgte-container .background {
+    height: 46vh;
 
-  .advice-card {
-    background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #4CAF50;
-
-    p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #2E7D32;
-      font-weight: 500;
-      line-height: 1.4;
-      font-style: italic;
-    }
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    .premgte-chart-section {
-      .section-title {
-        font-size: 1.5rem;
-      }
-
-      .section-subtitle {
-        font-size: 0.9rem;
-      }
+    .bg-banner {
+      top: 14rem;
     }
 
-    .wordcloud-container .word-large {
-      font-size: 2rem;
+    .bg-title {
+      width: 200%;
     }
 
-    .wordcloud-container .word-medium {
-      font-size: 1.4rem;
-    }
-
-    .advice-grid {
-      grid-template-columns: 1fr;
+    .bg-lockers {
+      height: clamp(300px, 10vh, 800px);
     }
   }
 }

@@ -1,0 +1,56 @@
+@use "../../app/globals.scss" as *;
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto 2rem;
+  padding: 0 2rem 4rem;
+  background: transparent;
+  z-index: 10;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  font-family: $font-nunito;
+  font-weight: 500;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 6px var(--color-shadow);
+  border: 3px solid transparent;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.nav-btn--purple {
+  background: var(--color-purple-light);
+  color: #3d2670;
+  border-color: #6d4fa3;
+}
+
+.nav-btn--blue {
+  background: var(--color-blue-primary);
+  color: white;
+  border-color: #316798;
+}
+
+.nav-btn--yellow {
+  background: var(--color-yellow-light);
+  color: #3d2670;
+  border-color: #E9CB6D;
+}
+
+.nav-btn--green {
+  background: var(--color-green-primary);
+  color: #2d3d1a;
+  border-color: #5a7d4a;
+}

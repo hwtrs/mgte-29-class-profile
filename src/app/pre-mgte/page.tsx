@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import GenericChart from '../../components/charts/GenericChart';
 import './premgte.scss';
@@ -10,229 +11,203 @@ export default function PreMgtePage() {
     <ProfileLayout>
       <div className="premgte-container">
 
-        {/* Admission Average Reveal */}
-        <section className="premgte-chart-section">
+        <section className="background">
+          <span className="bg-banner" />
+          <span className="bg-lockers" />
+          <span className="bg-title" />
+        </section>
+
+        <section className="premgte-section">
+          {/* Admission Average Reveal */}
           <h2 className="section-title">Admission Average Reveal</h2>
-          <p className="section-subtitle">Our students consistently excel academically!</p>
-          <p className="respondent-count">54 respondents</p>
-          <div className="charts-row">
+          <p className="section-subtitle">Good grades help, but passion and persistence matter even more.</p>
+          <div className="charts-row single-chart">
             <GenericChart
               title="What was your high school admission average?"
-              dataUrl="/data/hs-average.csv"
+              showRespondents
+              dataUrl="/data/pre-mgte/hs-average.csv"
               chartType="ColumnChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 vAxis: { title: 'Number of Students' },
-                hAxis: { title: 'Average Range (%)' }
+                hAxis: {
+                  title: 'Admission Average (%)',
+                }
               }}
             />
           </div>
-        </section>
 
-        {/* Extracurriculars */}
-        <section className="premgte-chart-section">
+          {/* Extracurriculars */}
           <h2 className="section-title">Extracurriculars</h2>
-          <p className="section-subtitle">Where MGTE learned about teamwork and leadership!</p>
-          <p className="respondent-count">53 respondents</p>
-          <div className="charts-row">
+          <p className="section-subtitle">Where MGTE learned about teamwork, leadership, and skills textbooks couldn&apos;t teach us.</p>
+          <div className="charts-row single-chart">
             <GenericChart
-              title="What were your favorite extracurriculars?"
-              dataUrl="/data/extracurriculars.csv"
+              title="What were your notable extracurriculars?"
+              subtitle="number of respondents: 52"
+              dataUrl="/data/pre-mgte/extracurriculars.csv"
               chartType="BarChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 hAxis: { title: 'Number of People' }
               }}
             />
           </div>
-        </section>
 
-        {/* Coding Experience */}
-        <section className="premgte-chart-section">
+          {/* Coding Experience */}
           <h2 className="section-title">Coding Experience</h2>
-          <p className="section-subtitle">On a scale of 1-10, how well did you know how to code before university?</p>
-          <p className="respondent-count">57 respondents</p>
-          <div className="charts-row">
+          <p className="section-subtitle">Majority of us barely touched the terminal, and that&apos;s okay!</p>
+          <div className="charts-row single-chart">
             <GenericChart
-              title="Before University Coding Knowledge"
-              dataUrl="/data/coding-level.csv"
+              title="On a scale of 1-10, how well did you know how to code before university?"
+              showRespondents
+              dataUrl="/data/pre-mgte/coding-level.csv"
               chartType="ColumnChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 vAxis: { title: 'Number of Students' },
                 hAxis: { title: 'Coding Level (1-10)' }
               }}
             />
           </div>
-        </section>
 
-        {/* Our Transition to University */}
-        <section className="premgte-chart-section">
+          {/* Our Transition to University */}
           <h2 className="section-title">Our Transition to University</h2>
-          <p className="section-subtitle">What did you do before entering MGTE at UofT?</p>
-          <p className="respondent-count">57 respondents for transition question, 54 respondents for preparation rating</p>
+          <p className="section-subtitle">No matter where we started, we all made it (mostly) through the madness of first year.</p>
           <div className="charts-row">
             <GenericChart
-              title="What did you do before entering MGTE at UofT?"
-              dataUrl="/data/hs-vs-uni.csv"
+              title="What did you do before starting MGTE in 2024?"
+              showRespondents
+              dataUrl="/data/pre-mgte/hs-vs-uni.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#4CAF50', '#81C784', '#A5D6A7']
+              options={{
+
+                colors: ['#66BB6A', '#A5D6A7', '#81C784']
               }}
             />
             <GenericChart
-              title="From a scale of 1-10, how well did your high school prepare you for this university program?"
-              dataUrl="/data/hs-preparation.csv"
+              title="From a scale of 1-10, how well did your high school prepare you for this program?"
+              showRespondents
+              dataUrl="/data/pre-mgte/hs-preparation.csv"
               chartType="ColumnChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 vAxis: { title: 'Number of Students' },
                 hAxis: { title: 'Preparation Rating (1-10)' }
               }}
             />
           </div>
-        </section>
 
-        {/* Jobs and Internships */}
-        <section className="premgte-chart-section">
+          {/* Jobs and Internships */}
           <h2 className="section-title">Jobs and Internships</h2>
-          <p className="section-subtitle">Most of us were pretty busy during high school, working along with their academic responsibilities!</p>
-          <p className="respondent-count">55 respondents for part-time jobs, 56 respondents for internship experience</p>
+          <p className="section-subtitle">Most of us came with no internships on our resume, and we&apos;re doing just fine!</p>
           <div className="charts-row">
             <GenericChart
               title="Did you have a part-time job?"
-              dataUrl="/data/part-time-job.csv"
+              showRespondents
+              dataUrl="/data/pre-mgte/part-time-job.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#4CAF50', '#81C784', '#A5D6A7']
+              options={{
+
+                colors: ['#A5D6A7', '#66BB6A', '#81C784']
               }}
             />
             <GenericChart
-              title="Did you come to university with previous internship experience?"
-              dataUrl="/data/internship-experience.csv"
+              title="Did you come in with previous internship experience?"
+              showRespondents
+              dataUrl="/data/pre-mgte/internship-experience.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
-                colors: ['#4CAF50', '#81C784', '#A5D6A7']
+              options={{
+
+                colors: ['#66BB6A', '#A5D6A7', '#81C784']
               }}
             />
           </div>
-        </section>
 
-        {/* High School Passions */}
-        <section className="premgte-chart-section">
+          {/* High School Passions */}
           <h2 className="section-title">High School Passions</h2>
-          <p className="section-subtitle">What subjects got our hearts racing and minds working the most in high school and why it's important as it lay the foundations for our University studies!</p>
-          <p className="respondent-count">55 respondents</p>
-          <div className="charts-row">
+          <p className="section-subtitle">The subjects that sparked something in us... or at least made the school day fly by.</p>
+          <div className="charts-row single-chart">
             <GenericChart
               title="What was your favorite subject?"
-              dataUrl="/data/favorite-subject.csv"
+              showRespondents
+              dataUrl="/data/pre-mgte/favorite-subject.csv"
               chartType="BarChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 hAxis: { title: 'Number of People' }
               }}
             />
           </div>
-        </section>
 
-        {/* Notable Awards & Programs */}
-        <section className="premgte-chart-section">
-          <h2 className="section-title">Notable Awards & Programs</h2>
-          <p className="section-subtitle">What sets us apart from the rest</p>
-          <p className="respondent-count">51 respondents for academic programs, 38 respondents for graduation awards</p>
+          {/* Notable Awards & Programs */}
+          <h2 className="section-title">Notable Awards &amp; Programs</h2>
+          <p className="section-subtitle">What can we say? We like to aim high.</p>
           <div className="charts-row">
             <GenericChart
-              title="What were your notable academic programs?"
-              dataUrl="/data/academic-programs.csv"
+              title="What were your notable graduation awards?"
+              showRespondents
+              dataUrl="/data/pre-mgte/grad-awards.csv"
               chartType="BarChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 hAxis: { title: 'Number of People' }
               }}
             />
             <GenericChart
-              title="Did you win any academic programs?"
-              dataUrl="/data/grad-awards.csv"
+              title="Did you do any academic programs?"
+              showRespondents
+              dataUrl="/data/pre-mgte/academic-programs.csv"
               chartType="BarChart"
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#4CAF50'],
+                colors: ['#A5D6A7'],
                 hAxis: { title: 'Number of People' }
               }}
             />
           </div>
-        </section>
 
-        {/* Childhood Dream Jobs */}
-        <section className="premgte-chart-section">
+          {/* Childhood Dream Jobs */}
           <h2 className="section-title">Childhood Dream Jobs</h2>
-          <p className="section-subtitle">What are we a kid when the your dream job?</p>
-          <p className="respondent-count">36 respondents</p>
-          <div className="charts-row single-row">
-            <div className="dream-jobs-wordcloud">
-              <div className="wordcloud-container">
-                <span className="word-large">Doctor</span>
-                <span className="word-medium">Engineer</span>
-                <span className="word-medium">Teacher</span>
-                <span className="word-small">Astronaut</span>
-                <span className="word-small">Artist</span>
-                <span className="word-medium">Pilot</span>
-                <span className="word-small">Chef</span>
-                <span className="word-small">Scientist</span>
-                <span className="word-medium">Architect</span>
-                <span className="word-small">Lawyer</span>
-                <span className="word-small">Veterinarian</span>
-                <span className="word-small">Firefighter</span>
-                <span className="word-small">Police</span>
-                <span className="word-small">Musician</span>
-                <span className="word-small">Writer</span>
-                <span className="word-small">Athlete</span>
-                <span className="word-small">Actor</span>
-                <span className="word-small">Dancer</span>
-              </div>
-            </div>
-          </div>
-        </section>
+          <p className="section-subtitle">MGTE &apos;29 stays dreaming big!</p>
 
-        {/* Advice to Our Younger Selves */}
-        <section className="premgte-chart-section">
+          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+            <h3 style={{ fontFamily: 'Nunito', fontWeight: 700, fontSize: '1.25rem', color: '#000', marginBottom: '0.2rem' }}>When you were a kid, what was your dream job?</h3>
+            <p style={{ fontFamily: 'Nunito', fontStyle: 'italic', color: '#535047', fontSize: '14px', margin: 0 }}>number of respondents: 54</p>
+          </div>
+
+          <div className="charts-row single-chart">
+            <img
+              src="/pre-mgte/cloud.png"
+              alt="Childhood Dream Jobs Word Cloud"
+              className="word-cloud-img"
+            />
+          </div>
+
+          {/* Advice to Our Younger Selves */}
           <h2 className="section-title">Advice to Our Younger Selves</h2>
-          <p className="section-subtitle">Words of wisdom from MGTE students</p>
-          <div className="advice-grid">
-            <div className="advice-card">
-              <p>"Don't be afraid to take risks and try new things"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Focus on learning, not just grades"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Build meaningful relationships with your peers"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Don't compare yourself to others"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Ask for help when you need it"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Enjoy the journey, not just the destination"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Stay curious and keep asking questions"</p>
-            </div>
-            <div className="advice-card">
-              <p>"Time management is everything"</p>
-            </div>
+          <p className="section-subtitle">The best advice to our high school-aged selves!</p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+            <img
+              src="/pre-mgte/advice.png"
+              alt="Advice to Our Younger Selves"
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px' }}
+            />
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="nav-buttons">
+            <Link href="/co-op" className="nav-btn nav-btn--yellow">
+              &larr; Co-op
+            </Link>
+            <Link href="/mgte" className="nav-btn nav-btn--purple">
+              MGTE &rarr;
+            </Link>
           </div>
         </section>
 

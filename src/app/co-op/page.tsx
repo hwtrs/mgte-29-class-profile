@@ -1,33 +1,12 @@
 'use client';
 
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import './coop.scss';
 import GenericChart from '../../components/charts/GenericChart';
 
 export default function CoopPage() {
-  const [awkwardMoments, setAwkwardMoments] = useState<string[]>([]);
-
-  useEffect(() => {
-    async function loadMoments() {
-      try {
-        const res = await fetch('/data/coop/awkward-moments.csv');
-        if (!res.ok) throw new Error('Failed to load csv data');
-        const text = await res.text();
-        // Split by line, trim, filter out empty lines
-        const moments = text
-          .trim()
-          .split('\n')
-          .map(line => line.trim())
-          .filter(line => line.length > 0);
-        setAwkwardMoments(moments);
-      } catch (e) {
-        setAwkwardMoments(['Error loading csv data']);
-      }
-    }
-    loadMoments();
-  }, []);
-  
   return (
     <ProfileLayout>
       <div className="coop-container">
@@ -40,7 +19,7 @@ export default function CoopPage() {
         {/* How did you get your job? */}
         <section className="coop-chart-section">
           <h2 className="section-title">X Marks the Spot</h2>
-          <p className="section-subtitle">Here's how people found their co-ops!</p>
+          <p className="section-subtitle">Here&apos;s how people found their co-ops!</p>
           <p className="respondent-count">number of respondents: 38</p>
           <div className="charts-row">
             <GenericChart
@@ -49,7 +28,7 @@ export default function CoopPage() {
               chartType="ColumnChart"
               xAxisLabel='Different Ways'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
                 colors: ['#F4D03F'],
               }}
@@ -69,7 +48,7 @@ export default function CoopPage() {
               chartType="ColumnChart"
               xAxisLabel='Number of Applications'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
                 colors: ['#F4D03F'],
               }}
@@ -80,9 +59,9 @@ export default function CoopPage() {
               chartType="ColumnChart"
               xAxisLabel='Number of Applications'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -90,7 +69,7 @@ export default function CoopPage() {
 
         {/* Interviews */}
         <section className="coop-chart-section">
-          <h2 className="section-title">Let's Talk Interviews!</h2>
+          <h2 className="section-title">Let&apos;s Talk Interviews!</h2>
           <p className="section-subtitle">Excuse me, who is skipping their interviews??? 🧐</p>
           <p className="respondent-count">number of respondents: 39 / 38</p>
           <div className="charts-row">
@@ -98,8 +77,8 @@ export default function CoopPage() {
               title="How many interviews did you get?"
               dataUrl="/data/coop/interview-count.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
+              options={{
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -107,8 +86,8 @@ export default function CoopPage() {
               title="Did you ever miss an interview?"
               dataUrl="/data/coop/missed-an-interview.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
+              options={{
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -120,12 +99,12 @@ export default function CoopPage() {
           <h2 className="section-title">Awkward Interview Moments</h2>
           <p className="section-subtitle">Oh come on... it can’t be that bad... 😬</p>
           <p className="respondent-count">number of respondents: 20</p>
-          <div className="awkward-grid">
-            {awkwardMoments.map((moment, idx) => (
-              <div className="awkward-card" key={idx}>
-                {moment}
-              </div>
-            ))}
+          <div className="awkward-image-container" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+            <img
+              src="/coop/Group 39942.png"
+              alt="Awkward Interview Moments"
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px' }}
+            />
           </div>
         </section>
 
@@ -141,7 +120,7 @@ export default function CoopPage() {
               chartType="LineChart"
               xAxisLabel='Time'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
                 colors: ['#F4D03F'],
               }}
@@ -154,9 +133,9 @@ export default function CoopPage() {
               chartType="ColumnChart"
               xAxisLabel='Time'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -165,7 +144,7 @@ export default function CoopPage() {
         {/* How did you get your job? */}
         <section className="coop-chart-section">
           <h2 className="section-title">MGTE Big Dreams</h2>
-          <p className="section-subtitle">IT'S ABOUT DRIVE, IT'S ABOUT POWER...</p>
+          <p className="section-subtitle">IT&apos;S ABOUT DRIVE, IT&apos;S ABOUT POWER...</p>
           <p className="respondent-count">number of respondents: 25</p>
           <div className="charts-row">
             <GenericChart
@@ -174,9 +153,9 @@ export default function CoopPage() {
               chartType="ColumnChart"
               xAxisLabel='Company'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#FCF3CF'],
+                colors: ['#F4D03F'],
               }}
             />
           </div>
@@ -192,8 +171,8 @@ export default function CoopPage() {
               title="Where were you located?"
               dataUrl="/data/coop/job-location.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
+              options={{
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -201,8 +180,8 @@ export default function CoopPage() {
               title="Where did you work from?"
               dataUrl="/data/coop/job-type.csv"
               chartType="PieChart"
-              options={{ 
-                pieHole: 0.3,
+              options={{
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -214,9 +193,9 @@ export default function CoopPage() {
               chartType="BarChart"
               xAxisLabel='Position'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -234,9 +213,9 @@ export default function CoopPage() {
               chartType="BarChart"
               xAxisLabel='Rating (out of 5)'
               yAxisLabel='Number of People'
-              options={{ 
+              options={{
                 legend: { position: 'none' },
-                colors: ['#F9E79F'],
+                colors: ['#E8C430'],
               }}
             />
           </div>
@@ -244,12 +223,12 @@ export default function CoopPage() {
 
         {/* Navigation Buttons */}
         <div className="nav-buttons">
-          <a href="/lifestyle" className="nav-btn lifestyle-btn">
+          <Link href="/lifestyle" className="nav-btn nav-btn--purple">
             &larr; Lifestyle
-          </a>
-          <a href="/pre-mgte" className="nav-btn pre-mgte-btn">
+          </Link>
+          <Link href="/pre-mgte" className="nav-btn nav-btn--green">
             Pre-MGTE &rarr;
-          </a>
+          </Link>
         </div>
       </div>
     </ProfileLayout>

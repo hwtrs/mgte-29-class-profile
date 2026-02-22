@@ -2,38 +2,37 @@
 
 .chart-container {
   @include textbox-margin;
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 4rem;
-
-  @media (max-width: $breakpoint-md) {
-    padding: 1.5rem;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    padding: 1rem;
-  }
+  margin-bottom: 0;
 
   .chart-title {
-    @include section-title-style;
-    text-align: center;
-    margin-bottom: 0 !important;
-    color: black !important;
+    font-family: $font-nunito;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-bottom: 0;
+    color: #2f2e2e;
   }
 
   .chart-subtitle {
     @include description-style;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 16px;
+    font-family: $font-nunito;
+    font-style: normal;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 13px;
+    color: #6B5F54;
   }
 
   .chart-wrapper {
     width: 100%;
     height: 400px;
     position: relative;
+
+    &.pie-chart {
+      .pie-border-circle {
+        pointer-events: none;
+      }
+    }
 
     @media (max-width: $breakpoint-sm) {
       height: 350px;
@@ -42,14 +41,31 @@
 
   .loading-state {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 300px;
-    
+    gap: 1rem;
+
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #E0D6CC;
+      border-top-color: $color-darkest-purple;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
     .loading-text {
       @include description-style;
-      font-size: 18px;
+      font-size: 14px;
       color: $color-darkest-purple;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
 
@@ -60,7 +76,7 @@
     align-items: center;
     height: 300px;
     text-align: center;
-    
+
     .error-title {
       @include graph-question-text-style;
       font-weight: bold;
@@ -79,7 +95,7 @@
 // Side-by-side layout
 .chart-container.side-by-side {
   @include side-by-side-graphs;
-  
+
   @media (max-width: $breakpoint-md) {
     width: 100%;
     margin-right: 0;
@@ -98,7 +114,7 @@
 .chart-container.geo-chart {
   .chart-wrapper {
     height: 500px;
-    
+
     @media (max-width: $breakpoint-sm) {
       height: 400px;
     }
