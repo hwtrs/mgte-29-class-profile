@@ -83,7 +83,7 @@ export default function PreMgtePage() {
               dataUrl="/data/pre-mgte/hs-vs-uni.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#66BB6A', '#A5D6A7', '#81C784']
               }}
             />
@@ -111,7 +111,7 @@ export default function PreMgtePage() {
               dataUrl="/data/pre-mgte/part-time-job.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#A5D6A7', '#66BB6A', '#81C784']
               }}
             />
@@ -121,7 +121,7 @@ export default function PreMgtePage() {
               dataUrl="/data/pre-mgte/internship-experience.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#66BB6A', '#A5D6A7', '#81C784']
               }}
             />

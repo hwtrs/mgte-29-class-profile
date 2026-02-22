@@ -73,21 +73,44 @@ const GenericChart2: React.FC<GenericChart2Props> = ({
     loadData();
   }, [dataUrl, multiSeries]);
 
+  const isAxisChart = chartType === 'BarChart' || chartType === 'ColumnChart' || chartType === 'LineChart';
+  const defaultLegend = { position: chartType === 'GeoChart' ? 'none' : chartType == 'PieChart' ? 'bottom' : 'top' };
+
+  const axisTextStyle = { fontName: 'Nunito', fontSize: 12, color: '#6B5F54' };
+  const axisTitleStyle = { fontName: 'Nunito', fontSize: 13, color: '#4A4039', italic: false, bold: true };
+  const gridlineStyle = { color: '#E0D6CC', count: -1 };
+  const minorGridlines = { color: 'transparent' };
+
   const defaultOptions = {
     backgroundColor: 'transparent',
     pieSliceText: 'none',
     pieSliceBorderColor: 'transparent',
-    tooltip: { isHtml: true },
-    legend: { position: chartType === 'GeoChart' ? 'none' : chartType == 'PieChart' ? 'bottom' : 'top' },
-    chartArea: { width: '70%', height: '70%' },
-    ...(chartType === 'BarChart' || chartType === 'ColumnChart' || chartType === 'LineChart'
+    tooltip: { isHtml: true, textStyle: { fontName: 'Nunito' } },
+    legend: { ...defaultLegend, ...options.legend, textStyle: { fontName: 'Nunito', ...options.legend?.textStyle } },
+    chartArea: {
+      width: '70%', height: '70%',
+      ...(isAxisChart ? { backgroundColor: { fill: '#FAF6F1', stroke: '#E0D6CC', strokeWidth: 1 } } : {}),
+    },
+    ...(isAxisChart
       ? {
-        hAxis: { title: xAxisLabel || '' },
-        vAxis: { title: yAxisLabel || '' },
+        bar: { groupWidth: '65%' },
+        hAxis: { title: xAxisLabel || '', titleTextStyle: axisTitleStyle, textStyle: axisTextStyle, gridlines: gridlineStyle, minorGridlines, baselineColor: '#C4B6A6' },
+        vAxis: { title: yAxisLabel || '', titleTextStyle: axisTitleStyle, textStyle: axisTextStyle, gridlines: gridlineStyle, minorGridlines, baselineColor: '#C4B6A6' },
       }
       : {}),
     ...options,
   };
+  defaultOptions.legend = { ...defaultLegend, ...options.legend, textStyle: { fontName: 'Nunito', ...options.legend?.textStyle } };
+  if (options.chartArea) {
+    const bgDefault = isAxisChart ? { fill: '#FAF6F1', stroke: '#E0D6CC', strokeWidth: 1 } : undefined;
+    defaultOptions.chartArea = { ...defaultOptions.chartArea, ...options.chartArea, ...(bgDefault ? { backgroundColor: { ...bgDefault, ...options.chartArea?.backgroundColor } } : {}) };
+  }
+  if (options.hAxis) {
+    defaultOptions.hAxis = { ...defaultOptions.hAxis, ...options.hAxis, titleTextStyle: { ...axisTitleStyle, ...options.hAxis?.titleTextStyle }, textStyle: { ...axisTextStyle, ...options.hAxis?.textStyle }, gridlines: { ...gridlineStyle, ...options.hAxis?.gridlines }, minorGridlines };
+  }
+  if (options.vAxis) {
+    defaultOptions.vAxis = { ...defaultOptions.vAxis, ...options.vAxis, titleTextStyle: { ...axisTitleStyle, ...options.vAxis?.titleTextStyle }, textStyle: { ...axisTextStyle, ...options.vAxis?.textStyle }, gridlines: { ...gridlineStyle, ...options.vAxis?.gridlines }, minorGridlines };
+  }
 
   if (loading) {
     return (

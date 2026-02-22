@@ -72,6 +72,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />
@@ -86,6 +87,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />
@@ -177,6 +179,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />
@@ -198,6 +201,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />
@@ -212,6 +216,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />
@@ -273,6 +278,7 @@ export default function DemographicsPage() {
                 chartType="PieChart"
                 options={{
                   colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF'],
+
                   legend: { position: 'bottom' }
                 }}
               />

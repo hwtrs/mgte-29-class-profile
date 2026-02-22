@@ -78,7 +78,7 @@ export default function CoopPage() {
               dataUrl="/data/coop/interview-count.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -87,7 +87,7 @@ export default function CoopPage() {
               dataUrl="/data/coop/missed-an-interview.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -172,7 +172,7 @@ export default function CoopPage() {
               dataUrl="/data/coop/job-location.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />
@@ -181,7 +181,7 @@ export default function CoopPage() {
               dataUrl="/data/coop/job-type.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#F4D03F', '#F7DC6F', '#F9E79F', '#FCF3CF']
               }}
             />

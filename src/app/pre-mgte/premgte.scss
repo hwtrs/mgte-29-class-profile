@@ -1,6 +1,7 @@
 @use "../globals.scss" as *;
 
 .premgte-container {
+  --pie-border-color: #4CAF50;
   width: 100%;
   min-height: 100vh;
   padding: 0;

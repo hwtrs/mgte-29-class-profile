@@ -198,36 +198,54 @@ button:focus-visible {
 }
 
 // Google charts HTML tooltip customization
-.google-visualization-tooltip {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
-  padding: 12px 16px !important;
+// Structure: div.google-visualization-tooltip > ul.google-visualization-tooltip-item-list
+//   > li.google-visualization-tooltip-item > span (with heavy inline styles)
+div.google-visualization-tooltip {
+  // Override inline width/height Google injects
+  width: auto !important;
+  height: auto !important;
+  background: #F5EDE4 !important;
+  border: 2px solid #C4B6A6 !important;
+  border-radius: 3px !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15) !important;
+  padding: 5px 8px !important;
   pointer-events: none !important;
-  font-family: $font-nunito !important;
-  transition: opacity 0.2s ease !important;
+  white-space: nowrap !important;
 
-  // First child is usually the label/title
-  >ul>li:first-child {
-    font-weight: 700 !important;
-    color: $color-darkest-purple !important;
-    font-size: 14px !important;
-    margin-bottom: 6px !important;
-    padding-bottom: 6px !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  .google-visualization-tooltip-item-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  // Subsequent children are the values
-  >ul>li:not(:first-child) {
-    font-weight: 600 !important;
-    color: #444 !important;
-    font-size: 13px !important;
+  .google-visualization-tooltip-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.4 !important;
 
-    // The color square indicator
-    span:first-child {
-      border-radius: 4px !important;
-      margin-right: 8px !important;
+    span {
+      font-family: $font-nunito !important;
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+      margin: 0 !important;
+    }
+
+    // Label row
+    &:first-child {
+      padding-bottom: 2px !important;
+      margin-bottom: 2px !important;
+      border-bottom: 1.5px dashed #C4B6A6 !important;
+
+      span {
+        font-weight: 700 !important;
+        color: #2f2e2e !important;
+      }
+    }
+
+    // Value row
+    &:last-child span {
+      font-weight: 800 !important;
+      color: #535047 !important;
     }
   }
 }

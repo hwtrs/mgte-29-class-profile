@@ -82,7 +82,7 @@ export default function LifestylePage() {
               dataUrl="/data/lifestyle/daily-screen-hours.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#6247AA', '#8B7BB8', '#C7B6E5', '#DED4F0'],
                 legend: { position: 'bottom' },
               }}
@@ -93,7 +93,7 @@ export default function LifestylePage() {
               dataUrl="/data/lifestyle/daily-sleep.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#6247AA', '#8B7BB8', '#C7B6E5', '#DED4F0'],
                 legend: { position: 'bottom' },
               }}
@@ -142,7 +142,7 @@ export default function LifestylePage() {
               dataUrl="/data/lifestyle/best-friend.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#6247AA', '#C7B6E5'],
                 legend: { position: 'bottom' },
               }}
@@ -229,7 +229,7 @@ export default function LifestylePage() {
               dataUrl="/data/lifestyle/hated-on.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#6247AA', '#C7B6E5'],
                 legend: { position: 'bottom' },
               }}
@@ -240,7 +240,7 @@ export default function LifestylePage() {
               dataUrl="/data/lifestyle/crush.csv"
               chartType="PieChart"
               options={{
-                pieHole: 0.3,
+
                 colors: ['#6247AA', '#8B7BB8', '#C7B6E5'],
                 legend: { position: 'bottom' },
               }}

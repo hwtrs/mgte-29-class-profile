@@ -4,21 +4,13 @@
   @include textbox-margin;
   margin-bottom: 0;
 
-  @media (max-width: $breakpoint-md) {
-    // padding: 1.5rem;
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    // padding: 1rem;
-  }
-
   .chart-title {
     font-family: $font-nunito;
-    font-weight: 700;
-    font-size: 1.25rem;
+    font-weight: 800;
+    font-size: 1.1rem;
     text-align: left;
     margin-bottom: 0;
-    color: black;
+    color: #2f2e2e;
   }
 
   .chart-subtitle {
@@ -26,8 +18,9 @@
     font-family: $font-nunito;
     font-style: normal;
     text-align: left;
-    margin-bottom: 1rem;
-    font-size: 14px;
+    margin-bottom: 0.5rem;
+    font-size: 13px;
+    color: #6B5F54;
   }
 
   .chart-wrapper {
@@ -36,13 +29,8 @@
     position: relative;
 
     &.pie-chart {
-      svg {
-        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
-
-        g>path[stroke="transparent"] {
-          stroke: inherit;
-          stroke-width: 3px;
-        }
+      .pie-border-circle {
+        pointer-events: none;
       }
     }
 
@@ -62,7 +50,7 @@
     .loading-spinner {
       width: 32px;
       height: 32px;
-      border: 3px solid #e0e0e0;
+      border: 3px solid #E0D6CC;
       border-top-color: $color-darkest-purple;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;

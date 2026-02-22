@@ -167,8 +167,9 @@ export default function AcademicsPage() {
               title="Favourite Room in RCH?"
               dataUrl="/data/academics/fav-room.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
           </div>
@@ -181,8 +182,9 @@ export default function AcademicsPage() {
             subtitle="number of respondents: 38"
             dataUrl='/data/academics/physics.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#D2E6FD', '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
             }}
           />
 
@@ -195,8 +197,9 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 44"
               dataUrl="/data/academics/ipad-vs-paper.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
             <GenericChart
@@ -204,8 +207,9 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 44"
               dataUrl="/data/academics/os.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: ['#2D5B8E', '#9DCAF3'],
+
               }}
             />
           </div>
@@ -261,8 +265,9 @@ export default function AcademicsPage() {
               subtitle="number of respondents: 42"
               dataUrl="/data/academics/all-nighters.csv"
               chartType="PieChart"
-              options={{ 
+              options={{
                 colors: [ '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
               }}
             />
           </div>
@@ -275,8 +280,9 @@ export default function AcademicsPage() {
             subtitle="number of respondents: 41"
             dataUrl='/data/academics/extracurriculars.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#D2E6FD', '#132D47', '#4D81B1', '#1D3E62', '#9DCAF3'],
+
             }}
           />
 
@@ -288,8 +294,9 @@ export default function AcademicsPage() {
             subtitle="number of respondents: 43"
             dataUrl='/data/academics/higher-edu.csv'
             chartType="PieChart"
-            options={{ 
+            options={{
               colors: ['#132D47', '#4D81B1', '#9DCAF3'],
+
             }}
           />
 
