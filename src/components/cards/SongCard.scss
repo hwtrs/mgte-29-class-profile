@@ -1,0 +1,39 @@
+@use "../../app/globals.scss" as *;
+
+.song-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.song-card {
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: rotate(var(--hover-rotation)) scale(1.05);
+    opacity: 0.85;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}

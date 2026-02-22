@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ProfileLayout from '../../layouts/ProfileLayout';
 import GenericChart from '../../components/charts/GenericChart';
 import MultiSeriesChart from '../../components/charts/MultiSeriesChart';
+import SongCard from '../../components/cards/SongCard';
 import './lifestyle.scss';
 
 export default function LifestylePage() {
@@ -251,11 +252,14 @@ export default function LifestylePage() {
           <p className="section-subtitle">Triple M: Music. Media. Management.</p>
           <div className="section-img-wrapper">
             <h3 className="img-subtitle">What song did you have on repeat?</h3>
-            <img
-              src="/lifestyle/songs.png"
-              alt="Favourite songs on repeat"
-              className="section-img"
-            />
+            <div className="song-cards-grid">
+              <SongCard title="So Good" artist="Weston Estate" image="/lifestyle/song-so-good.png" spotifyTrackId="0ZpHuEhi1CvOJgrqOSy8mv" rotation={3} />
+              <SongCard title="Nokia" artist="Drake" image="/lifestyle/song-nokia.png" spotifyTrackId="2u9S9JJ6hTZS3Vf22HOZKg" rotation={-2} />
+              <SongCard title="ETA" artist="NewJeans" image="/lifestyle/song-eta.png" spotifyTrackId="56v8WEnGzLByGsDAXDiv4d" rotation={4} />
+              <SongCard title="Pink Matter" artist="Frank Ocean" image="/lifestyle/song-pink-matter.png" spotifyTrackId="1fOkmYW3ZFkkjIdOZSf596" rotation={-3} />
+              <SongCard title="Free Now" artist="Gracie Abrams" image="/lifestyle/song-free-now.png" spotifyTrackId="1aThn8Pk8zRzGGPClZe9Oq" rotation={2} />
+              <SongCard title="Pray for Me" artist="Kendrick Lamar & The Weeknd" image="/lifestyle/song-pray-for-me.png" spotifyTrackId="77UjLW8j5UAGAGVGhR5oUK" rotation={-4} />
+            </div>
           </div>
           <div className="section-img-wrapper">
             <h3 className="img-subtitle">What show were you binging while studying (or not)?</h3>
@@ -284,6 +288,7 @@ export default function LifestylePage() {
                 legend: { position: 'top' },
                 curveType: 'function',
                 pointSize: 6,
+                vAxis: { format: '0' },
               }}
             />
           </div>
